@@ -33,6 +33,14 @@
                             <td><?php echo $lahan->no_hp; ?></td>
                         </tr>
                         <tr>
+                            <th width="20%">Perkiraan Panen (Kg)</th>
+                            <td><?php echo $lahan->perkiraan_panen; ?></td>
+                        </tr>
+                        <tr>
+                            <th width="20%">Harga Jeruk</th>
+                            <td><?php echo $lahan->harga_jeruk; ?></td>
+                        </tr>
+                        <tr>
                             <th width="20%">Jenis Jeruk</th>
                             <td><?php echo $lahan->jeruk_nama; ?></td>
                         </tr>

@@ -53,6 +53,19 @@
                                             <label for="varchar">Foto Lahan <?php echo form_error('foto') ?></label>
                                             <input input type="file" name="foto" class="custom-file-input" id="foto" aria-describedby="input-foto" accept="image/*">
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <label for="varchar">Perkiraan Panen (Kg) <?php echo form_error('perkiraan_panen') ?></label>
+                                            <input type="number" class="form-control" name="perkiraan_panen" id="perkiraan_panen" placeholder="Perkiraan Panen" value="<?php echo $perkiraan_panen; ?>" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="varchar">Harga Jeruk <?php echo form_error('harga_jeruk') ?></label>
+                                            <input type="number" class="form-control" name="harga_jeruk" id="harga_jeruk" placeholder="Harga Jeruk" value="<?php echo $harga_jeruk; ?>" />
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label for="varchar">Jenis Jeruk<?php echo form_error('id_jeruk') ?></label>
                                             <select name="id_jeruk" id="id_jeruk" class="form-control">
