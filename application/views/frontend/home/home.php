@@ -88,7 +88,7 @@ function initMap() {
             $latitude           = $lahan->latitude;
             $longitude          = $lahan->longitude;
             $kecamatan_nama     = $lahan->kecamatan_nama;
-            echo ("addMarker($latitude, $longitude,  '<b>Nama : $nama_pemilik<b>', '<br>Kecamatan : $kecamatan_nama</br>', '<b>Alamat : $lokasi_lahan<b>', '<br>No Hp : $no_hp<br>',  '<br><a href=\"lokasi/detil/$id_lahan\" class=\"btn btn-sm btn-info\">Detail</a><br>');\n");
+            echo ("addMarker($latitude, $longitude, '<b>$nama_pemilik</b>', '<br>$lokasi_lahan', '<br>$no_hp<br>', '<a href=\"lokasi/detil/$id_lahan\" class=\"btn btn-sm btn-info\">Detail</a>');\n");
         }
 
     ?>

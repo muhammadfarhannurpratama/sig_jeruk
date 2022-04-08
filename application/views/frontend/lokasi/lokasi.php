@@ -1,7 +1,7 @@
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('home')?>">Beranda</a></li>
             <li class="breadcrumb-item"><a href="<?php echo base_url('lokasi')?>">Lokasi Lahan Jeruk</a></li>
         </ol>
     </nav>
