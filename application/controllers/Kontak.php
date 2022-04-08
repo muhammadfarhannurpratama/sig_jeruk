@@ -44,11 +44,11 @@ class Kontak extends CI_Controller {
             $config['useragent'] = 'SIG Pemetaan Lahan Jeruk'; //bebas sesuai keinginan kamu
             $config['protocol']= "smtp";
             $config['mailtype']= "html";
-            $config['smtp_host']= "ssl://mail.sigpisanglumajang.com";
+            $config['smtp_host']= "ssl://mail..com";
             $config['smtp_port']= "465";
             $config['smtp_timeout']= "5";
-            $config['smtp_user']= "ajicheater@gmail.com";//isi dengan email kamu
-            $config['smtp_pass']= "Vika450639"; // isi dengan password kamu
+            $config['smtp_user']= "@gmail.com";//isi dengan email kamu
+            $config['smtp_pass']= ""; // isi dengan password kamu
             $config['crlf']="\r\n";
             $config['newline']="\r\n";
 
@@ -60,7 +60,7 @@ class Kontak extends CI_Controller {
 
             $this->email->initialize($config);
             //konfigurasi pengiriman
-            $this->email->from("ajicheater@gmail.com","SIG Pemetaan Lahan jeruk");
+            $this->email->from("@gmail.com","SIG Pemetaan Lahan jeruk");
             $this->email->to($email);
             $this->email->cc($this->input->post('email'));
             $this->email->subject($this->input->post('subjek'));

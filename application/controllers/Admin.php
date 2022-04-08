@@ -42,7 +42,6 @@ class Admin extends CI_Controller {
         $this->data['admin_status']         = set_value('admin_status');
         $this->data['option_admin_status']  = array(
             'Administrator' => 'Administrator',
-            'Retail'        => 'Retail',
             'User'          => 'User',
         );
 
@@ -63,7 +62,6 @@ class Admin extends CI_Controller {
             $this->data['admin_status']         = set_value('admin_status', $row->admin_status);
             $this->data['option_admin_status']  = array(
                 'Administrator' => 'Administrator',
-                'Retail'        => 'Retail',
                 'User'          => 'User',
             );
 
