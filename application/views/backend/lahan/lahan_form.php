@@ -54,10 +54,14 @@
                                             <input input type="file" name="foto" class="custom-file-input" id="foto" aria-describedby="input-foto" accept="image/*">
                                         </div>
 
+                                        <div class="form-group">
+                                            <label for="varchar">Luas Lahan (m2) <?php echo form_error('luas_lahan') ?></label>
+                                            <input type="number" class="form-control" name="luas_lahan" id="luas_lahan" placeholder="Luas Lahan" value="<?php echo $luas_lahan; ?>" />
+                                        </div>
 
                                         <div class="form-group">
-                                            <label for="varchar">Perkiraan Panen (Kg) <?php echo form_error('perkiraan_panen') ?></label>
-                                            <input type="number" class="form-control" name="perkiraan_panen" id="perkiraan_panen" placeholder="Perkiraan Panen" value="<?php echo $perkiraan_panen; ?>" />
+                                            <label for="varchar">Jumlah Panen (Kg) <?php echo form_error('jumlah_panen') ?></label>
+                                            <input type="number" class="form-control" name="jumlah_panen" id="jumlah_panen" placeholder="Jumlah Panen" value="<?php echo $jumlah_panen; ?>" />
                                         </div>
 
                                         <div class="form-group">

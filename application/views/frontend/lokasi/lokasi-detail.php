@@ -33,8 +33,12 @@
                             <td><?php echo $lahan->no_hp; ?></td>
                         </tr>
                         <tr>
-                            <th width="20%">Perkiraan Panen (Kg)</th>
-                            <td><?php echo $lahan->perkiraan_panen; ?></td>
+                            <th width="20%">Luas Lahan (m2)</th>
+                            <td><?php echo $lahan->luas_lahan; ?></td>
+                        </tr>
+                        <tr>
+                            <th width="20%">Jumlah Panen (Kg)</th>
+                            <td><?php echo $lahan->jumlah_panen; ?></td>
                         </tr>
                         <tr>
                             <th width="20%">Harga Jeruk</th>

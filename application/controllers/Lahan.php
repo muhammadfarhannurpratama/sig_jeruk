@@ -42,8 +42,10 @@ class Lahan extends CI_Controller {
         $this->data['no_hp']     = set_value('no_hp');
         $this->data['id_jeruk']     = set_value('id_jeruk');
 
-        $this->data['perkiraan_panen']     = set_value('perkiraan_panen');
-        $this->data['harga_jeruk']     = set_value('harga_jeruk');
+        $this->data['luas_lahan']     = set_value('luas_lahan');
+        $this->data['jumlah_panen']     = set_value('jumlah_panen');
+        $this->data['harga_jeruk']      = set_value('harga_jeruk');
+
        
         $this->data['latitude']     = set_value('latitude');
         $this->data['longitude']     = set_value('longitude');
@@ -72,7 +74,8 @@ class Lahan extends CI_Controller {
             $this->data['no_hp']     = set_value('no_hp', $row->no_hp);
             $this->data['id_jeruk']     = set_value('id_jeruk', $row->id_jeruk);
 
-            $this->data['perkiraan_panen']     = set_value('perkiraan_panen', $row->perkiraan_panen);
+            $this->data['luas_lahan']     = set_value('luas_lahan', $row->luas_lahan);
+            $this->data['jumlah_panen']     = set_value('jumlah_panen', $row->jumlah_panen);
             $this->data['harga_jeruk']     = set_value('harga_jeruk', $row->harga_jeruk);
            
             $this->data['latitude']     = set_value('latitude', $row->latitude);
@@ -140,7 +143,8 @@ class Lahan extends CI_Controller {
                 'no_hp' => $this->input->post('no_hp',TRUE),
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
                
-                'perkiraan_panen' => $this->input->post('perkiraan_panen',TRUE),
+                'luas_lahan' => $this->input->post('luas_lahan',TRUE),
+                'jumlah_panen' => $this->input->post('jumlah_panen',TRUE),
                 'harga_jeruk' => $this->input->post('harga_jeruk',TRUE),
                
                
@@ -189,7 +193,8 @@ class Lahan extends CI_Controller {
                 'lokasi_lahan' => $this->input->post('lokasi_lahan',TRUE),
                 'no_hp' => $this->input->post('no_hp',TRUE),
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
-                'perkiraan_panen' => $this->input->post('perkiraan_panen',TRUE),
+                'luas_lahan' => $this->input->post('luas_lahan',TRUE),
+                'jumlah_panen' => $this->input->post('jumlah_panen',TRUE),
                 'harga_jeruk' => $this->input->post('harga_jeruk',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
@@ -212,7 +217,8 @@ class Lahan extends CI_Controller {
         $this->form_validation->set_rules('no_hp', ' ', 'trim');
         $this->form_validation->set_rules('id_jeruk', ' ', 'trim');
 
-        $this->form_validation->set_rules('perkiraan_panen', ' ', 'trim|required');
+        $this->form_validation->set_rules('luas_lahan', ' ', 'trim|required');
+        $this->form_validation->set_rules('jumlah_panen', ' ', 'trim|required');
         $this->form_validation->set_rules('harga_jeruk', ' ', 'trim|required');
        
         $this->form_validation->set_rules('longitude', ' ', 'trim|required');
