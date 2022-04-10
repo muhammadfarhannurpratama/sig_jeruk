@@ -28,7 +28,7 @@
                     <tr>
                         <td class="text-center"><?php echo ++$start ?></td>
                         <td class="text-center">
-                            <a href="<?php echo base_url('lokasi/detil/'.$lahan->id_lahan)?>" class="btn btn-info btn-sm"><i class="fa fa-search"></i>&nbsp;Detail</a>
+                            <a href="<?php echo base_url('lokasi/mdetail/'.$lahan->id_lahan)?>" class="btn btn-info btn-sm"><i class="fa fa-search"></i>&nbsp;Detail</a>
                         </td>
                         <td><?php echo $lahan->nama_pemilik; ?></td>
                         <td><?php echo $lahan->no_hp; ?></td>

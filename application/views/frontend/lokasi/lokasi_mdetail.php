@@ -55,7 +55,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="<?php echo base_url('home')?>" class="btn btn-success btn-sm"><i class="fa fa-chevron-left"></i>&nbsp;Kembali</a>
+                    <a href="<?php echo base_url('Dashboard')?>" class="btn btn-success btn-sm"><i class="fa fa-chevron-left"></i>&nbsp;Kembali</a>
                 </div>
             </div>
         </div>

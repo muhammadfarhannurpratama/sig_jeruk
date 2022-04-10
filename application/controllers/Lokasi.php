@@ -39,5 +39,19 @@ class Lokasi extends CI_Controller {
         $this->load->view('frontend/public', $this->data);
     }
 
+    public function mdetail($id){
+        $row = $this->lahan->get_by_id_lahan($id);
+
+        if ($row) {
+            $this->data['lahan']  = $row;
+            $this->data['title'] = $row->nama_pemilik;
+
+            $this->data['main_view']	= "frontend/lokasi/lokasi_mdetail";
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('lokasi'));
+        }
+        $this->load->view('frontend/public', $this->data);
+    }
 
 }
