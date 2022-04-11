@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 04:36 AM
+-- Generation Time: Apr 11, 2022 at 07:41 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -46,9 +46,8 @@ INSERT INTO `tb_admin` (`admin_id`, `admin_user`, `admin_pass`, `admin_namalengk
 (1, 'admin', '$2y$10$lGCLUHMRpNQLXc6F2riOROOIKyLX82qXXZWBvedDHbs6yF5EVKyOu', 'Muh Farhan', '', '', '1619160423.png', 'Administrator'),
 (20, 'aji', '$2y$10$kPmozOBN6Z/wL1TfjsdBfe/G1wbCPf7IcaJoJbjKkeTHYQxdDcWCG', 'Septiaji', '', '', '', 'Administrator'),
 (21, 'dianarof', '$2y$10$JF4cBsKgivl1pIlprjWimO9MqEUYACmZWH/clY1Abu8aOvjYHp.pm', 'diana rofiah hayati', '', '', '', 'Administrator'),
-(22, 'dinaalifa', '$2y$10$T0qVZJZfZQxlDY9fcwmvIuOLsmGh0cTzcDj81jiJKOlsNZCNg3YqW', 'dina alifatul', '', '', '1627094679.png', 'User'),
-(23, 'budi', '$2y$10$0sxBu/OTti/E0BUQO.RmheqTKzUwVzwY.kY1LeEItNJzJ/DHvT6Ty', 'budi setyo', '', '', '', 'User'),
-(24, 'ponidi', '$2y$10$gLCuD6/Lz9wUr.JeTEfeveAd8EpIZFFW0jdfrFCNMk9J28hvvXB3q', 'ponidi', '', '', '', 'Retail');
+(22, 'dinaalifa', '$2y$10$hj7Zmirgw34reNaOW.rvROwZtn9o6kbIe31lQ8eRHze4BFOEnLs0m', 'dina alifatul', '', '', '1627094679.png', 'User'),
+(23, 'budi', '$2y$10$0sxBu/OTti/E0BUQO.RmheqTKzUwVzwY.kY1LeEItNJzJ/DHvT6Ty', 'budi setyo', '', '', '', 'User');
 
 -- --------------------------------------------------------
 
@@ -154,6 +153,9 @@ CREATE TABLE `tb_lahan` (
   `no_hp` varchar(50) DEFAULT NULL,
   `foto_lahan` varchar(256) NOT NULL,
   `id_jeruk` int(11) DEFAULT NULL,
+  `luas_lahan` varchar(10) NOT NULL,
+  `jumlah_panen` varchar(10) NOT NULL,
+  `harga_jeruk` varchar(10) NOT NULL,
   `latitude` varchar(50) DEFAULT NULL,
   `longitude` varchar(50) DEFAULT NULL,
   `kecamatan_id` int(11) DEFAULT NULL,
@@ -164,12 +166,12 @@ CREATE TABLE `tb_lahan` (
 -- Dumping data for table `tb_lahan`
 --
 
-INSERT INTO `tb_lahan` (`id_lahan`, `nama_pemilik`, `lokasi_lahan`, `no_hp`, `foto_lahan`, `id_jeruk`, `latitude`, `longitude`, `kecamatan_id`, `kelurahan_id`) VALUES
-(23, 'pak jo', 'Jl.Semboro pg', '085231453900', '1646879803.jpg', 8, '-8.194334', '113.448250', 28, 27),
-(24, 'puput', 'babatan', '098765432167', '1646880981.png', 8, '-8.192146', '113.440612', 28, 27),
-(25, 'sukiman', 'jl. pucukan', '098123786546', '1647096092.PNG', 14, '-8.168097', '113.435187', 28, 28),
-(26, 'supardi', 'Jl.Baidi', '086123876909', '1647482034.png', 7, '-8.170055', '113.423934', 28, 29),
-(27, 'mannan', 'Jl.Test', '098765765413', '1647503462.png', 7, '-8.211969', '113.456314', 28, 27);
+INSERT INTO `tb_lahan` (`id_lahan`, `nama_pemilik`, `lokasi_lahan`, `no_hp`, `foto_lahan`, `id_jeruk`, `luas_lahan`, `jumlah_panen`, `harga_jeruk`, `latitude`, `longitude`, `kecamatan_id`, `kelurahan_id`) VALUES
+(23, 'pak jo', 'Jl.Semboro pg', '085231453900', '1646879803.jpg', 8, '200', '800', '5000', '-8.194334', '113.448250', 28, 27),
+(24, 'puput', 'babatan', '098765432167', '1646880981.png', 8, '1000', '2000', '5000', '-8.192146', '113.440612', 28, 27),
+(25, 'sukiman', 'jl. pucukan', '098123786546', '1647096092.PNG', 14, '500', '1200', '5000', '-8.168097', '113.435187', 28, 28),
+(26, 'supardi', 'Jl.Baidi', '086123876909', '1647482034.png', 7, '700', '1600', '5000', '-8.170055', '113.423934', 28, 29),
+(27, 'mannan', 'Jl.Test', '098765765413', '1647503462.png', 7, '380', '960', '5000', '-8.211969', '113.456314', 28, 27);
 
 --
 -- Indexes for dumped tables
@@ -223,7 +225,7 @@ ALTER TABLE `tb_lahan`
 -- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tb_identitas`
