@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>List Data User</h2>
+                        <h2>List Data Retail</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -20,7 +20,7 @@
                                 <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
                             </div>
                             <div class="col-md-6 text-right">
-                                <?php echo anchor(site_url('User/create'), '<i class="fa fa-plus-square"> </i> Tambah User', 'class="btn btn-primary"'); ?>
+                                <?php echo anchor(site_url('Retail/create'), '<i class="fa fa-plus-square"> </i> Tambah retail', 'class="btn btn-primary"'); ?>
                                 <!-- <?php echo anchor(site_url('User/excel'), 'Excel', 'class="btn btn-primary"'); ?>
                                 <?php echo anchor(site_url('User/word'), 'Word', 'class="btn btn-primary"'); ?> -->
                             </div>
@@ -29,27 +29,35 @@
                             <thead>
                                 <tr>
                                     <th width="80px">No</th>
-                                    <th>Username</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Level</th>
+                                    <th>Nama Retail</th>
+                                    <th>Telepon</th>
+                                    <th>Stok</th>
+                                    <th>Harga Jual</th>
+                                    <th>Harga Beli</th>
+                                    <th>Kecamatan</th>
+                                    <th>Kelurahan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                         $start = 0;
-                                        foreach ($user_data as $user)
+                                        foreach ($retail_data as $retail)
                                         {
                                             ?>
                                 <tr>
                                     <td><?php echo ++$start ?></td>
-                                    <td><?php echo $user->user_username ?></td>
-                                    <td><?php echo $user->user_namalengkap ?></td>
-                                    <td><?php echo $user->user_status ?></td>
+                                    <td><?php echo $retail->nama_retail ?></td>
+                                    <td><?php echo $retail->no_hp ?></td>
+                                    <td><?php echo $retail->stok ?></td>
+                                    <td><?php echo $retail->harga_jual ?></td>
+                                    <td><?php echo $retail->harga_beli ?></td>
+                                    <td><?php echo $retail->kecamatan_nama ?></td>
+                                    <td><?php echo $retail->kelurahan_nama ?></td>
                                     <td style="text-align:center" width="200px">
-                                        <?php 
-                                                echo anchor(site_url('user/update/'.$user->user_id),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); 
-                                                echo anchor(site_url('user/delete/'.$user->user_id),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"'); 
+                                        <?php
+                                                echo anchor(site_url('retail/update/'.$retail->id_retail),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); 
+                                                echo anchor(site_url('retail/delete/'.$retail->id_retail),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"'); 
                                                 ?>
                                     </td>
                                 </tr>

@@ -20,6 +20,7 @@ class Home extends CI_Controller {
         $this->data['action']           = site_url('home/filter');
         $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
         $this->data['lahan_data']     = $this->lahan->get_all_lahan();
+        $this->data['retail_data']     = $this->retail->get_all_retail();
         $this->load->view('frontend/public',$this->data);
     }
 
@@ -49,4 +50,5 @@ class Home extends CI_Controller {
             redirect('home');
         }
     }
+
 }

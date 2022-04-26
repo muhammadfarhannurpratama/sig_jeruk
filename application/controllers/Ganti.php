@@ -30,14 +30,14 @@ class Ganti extends CI_Controller {
         $pass_baru = strip_tags($this->input->post('password_baru',TRUE));
         $pass_conf = strip_tags($this->input->post('password_confirm',TRUE));
 
-        if(password_verify($pass_lama,$this->session->userdata('admin_pass'))){
+        if(password_verify($pass_lama,$this->session->userdata('user_pass'))){
             if($pass_baru == $pass_conf){
 
                 $data = array(
-                    'admin_pass' => password_hash($pass_baru, PASSWORD_DEFAULT)
+                    'user_pass' => password_hash($pass_baru, PASSWORD_DEFAULT)
                 );
 
-                $this->admin->update_password($this->input->post('admin_id', TRUE), $data);
+                $this->user->update_password($this->input->post('user_id', TRUE), $data);
 
                 $this->session->set_flashdata('message', 'Sukses Ganti Password');
                 redirect(site_url('ganti'));

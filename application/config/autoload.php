@@ -133,7 +133,7 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-    'M_Admin' => 'admin',
+    'M_User' => 'user',
     'M_Home' => 'home',
     'M_Identitas' => 'identitas',
     'M_Login' => 'login',
@@ -141,6 +141,8 @@ $autoload['model'] = array(
     'M_Kecamatan' => 'kecamatan',
     'M_kelurahan' => 'kelurahan',
     'M_Lahan' => 'lahan',
+    'M_Retail' => 'retail',
     'M_Jeruk' => 'jeruk',
     'M_Variabel' => 'variabel',
+    'M_Register' => 'register',
     );

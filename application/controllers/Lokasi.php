@@ -24,7 +24,7 @@ class Lokasi extends CI_Controller {
 
     }
 
-    public function detil($id){
+    public function detail($id){
         $row = $this->lahan->get_by_id_lahan($id);
 
         if ($row) {

@@ -17,8 +17,8 @@ class Gantifoto extends CI_Controller {
 
     public function index()
     {
-            $admin = $this->admin->get_all_admin();
-            $this->data['admin_data']   = $admin;
+            $user = $this->user->get_all_user();
+            $this->data['user_data']   = $user;
             $this->data['title']            = 'Ganti foto';
             $this->data['button']           = 'Update Foto';
             $this->data['action']           = site_url('gantifoto/update_foto');
@@ -48,11 +48,11 @@ class Gantifoto extends CI_Controller {
         }
 
         $data_foto = $this->upload->data();
-        $data['foto'] = $data_foto['file_name'];
-        // $result = $this->admin->update_data($this->session->id_admin, $data);
-        $this->db->set('foto_user',$data['foto']);
-        $this->db->where('admin_id',$this->session->admin_id);
-        $result=$this->db->update('tb_admin');
+        $data['foto_user'] = $data_foto['file_name'];
+        // $result = $this->user->update_data($this->session->id_user, $data);
+        $this->db->set('foto_user',$data['foto_user']);
+        $this->db->where('user_id',$this->session->user_id);
+        $result=$this->db->update('tb_user');
         if ($result) {
             $response = [
                 'status' => 'success',

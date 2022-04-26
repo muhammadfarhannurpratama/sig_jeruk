@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller {
 
     public $data = array(
-        'title'  => 'Admin Admin',
+        'title'  => 'User',
     );
 
     public function __construct()
@@ -18,11 +18,11 @@ class User extends CI_Controller {
     public function index()
     {
         $start = 0;
-        $admin = $this->admin->get_all_admin();
+        $user = $this->user->get_all_user();
 
-        $this->data['admin_data']   = $admin;
+        $this->data['user_data']   = $user;
         $this->data['start']        = $start;
-        $this->data['title'] = 'Data User';
+        $this->data['title'] = 'Master User';
 
         $this->data['main_view']	= "backend/user/user_list";
         $this->load->view('backend/public', $this->data);
@@ -34,110 +34,160 @@ class User extends CI_Controller {
 
         $this->data['title'] = 'Tambah Data User';
         $this->data['button']       = 'Tambah Data';
-        $this->data['action']       = site_url('User/create_action');
-        $this->data['admin_id']      = set_value('admin_id');
-        $this->data['admin_user']     = set_value('admin_user');
-        $this->data['admin_pass']     = set_value('admin_pass');
-        $this->data['admin_namalengkap'] = set_value('admin_namalengkap');
-        $this->data['admin_status']         = set_value('admin_status');
-        $this->data['option_admin_status']  = array(
+        $this->data['action']       = site_url('user/create_action');
+        $this->data['user_id']      = set_value('user_id');
+        $this->data['user_username']     = set_value('user_username');
+        $this->data['user_pass']     = set_value('user_pass');
+        $this->data['user_namalengkap'] = set_value('user_namalengkap');
+        $this->data['user_status']         = set_value('user_status');
+        $this->data['option_user_status']  = array(
             'Administrator' => 'Administrator',
-            'User'          => 'User',
+            'Petani'          => 'Petani',
+            'Retail'          => 'Retail',
         );
-        $this->session->set_flashdata('message', 'Tambah Data Berhasil');
+
         $this->data['main_view']	= "backend/user/user_form";
         $this->load->view('backend/public', $this->data);
     }
 
     public function update($id){
-        $row = $this->admin->get_by_id_admin($id);
+        $row = $this->user->get_by_id_user($id);
 
         if ($row) {
-            $this->data['title'] = 'Update Data Admin/Pengguna';
+            $this->data['title'] = 'Update Data User';
             $this->data['button']       = 'Update Data';
-            $this->data['action']       = site_url('admin/update_action');
-            $this->data['admin_id']      = set_value('admin_id', $row->admin_id);
-            $this->data['admin_user']     = set_value('admin_user', $row->admin_user);
-            $this->data['admin_namalengkap'] = set_value('admin_namalengkap', $row->admin_namalengkap);
-            $this->data['admin_status']         = set_value('admin_status', $row->admin_status);
-            $this->data['option_admin_status']  = array(
+            $this->data['action']       = site_url('user/update_action');
+            $this->data['user_id']      = set_value('user_id', $row->user_id);
+            $this->data['user_username']     = set_value('user_username', $row->user_username);
+            $this->data['user_namalengkap'] = set_value('user_namalengkap', $row->user_namalengkap);
+            $this->data['user_status']         = set_value('user_status', $row->user_status);
+            $this->data['option_user_status']  = array(
                 'Administrator' => 'Administrator',
-                'User'          => 'User',
+                'Petani'          => 'Petani',
+                'Retail'          => 'Retail',
             );
 
             $this->data['main_view']	= "backend/user/user_form";
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('User'));
+            redirect(site_url('user'));
         }
         $this->load->view('backend/public', $this->data);
     }
 
     public function delete($id){
-        $row = $this->admin->get_by_id_admin($id);
+        $row = $this->user->get_by_id_user($id);
 
         if ($row) {
-            $this->admin->delete_admin($id);
+            $this->user->delete_user($id);
             $this->session->set_flashdata('message', 'Hapus data berhasil.');
-            redirect(site_url('User'));
+            redirect(site_url('user'));
         } else {
             $this->session->set_flashdata('message', 'Data tidak ditemukan.');
-            redirect(site_url('User'));
+            redirect(site_url('user'));
         }
         $this->load->view('backend/public', $this->data);
     }
-
     public function create_action(){
-        $this->_rules_admin();
+        $this->_rules_user();
+        $config = [
+            'upload_path' => './assets/img/fotouser',
+            'allowed_types' => 'gif|jpg|png',
+            'file_name' => round(microtime(date('dY')))
+        ];
 
-        $data = array(
-            'admin_user' => $this->input->post('admin_user',TRUE),
-            'admin_pass' => password_hash($this->input->post('admin_pass',TRUE), PASSWORD_DEFAULT),
-            'admin_namalengkap' => $this->input->post('admin_namalengkap',TRUE),
-            'admin_status' => $this->input->post('admin_status',TRUE),
-        );
+        $this->load->library('upload', $config);
 
-        $this->admin->insert_admin($data);
-        $this->session->set_flashdata('message', 'Tambah Data Berhasil');
-        redirect(site_url('User'));
-    }
-    public function update_action(){
-        $this->_rules_admin();
+        if (!$this->upload->do_upload('foto_user')) {
+            $response = [
+                'status' => 'error',
+                'message' => $this->upload->display_errors()
+            ];
+
+            $this->session->set_flashdata('response', $response);
+        }
+
+        $data_foto = $this->upload->data();
+        $foto = $data_foto['file_name'];
 
         if ($this->form_validation->run() == FALSE) {
-            redirect(site_url('admin/update/'.$this->input->post('admin_id', TRUE)));
+            //$this->create();
+            redirect(site_url('user/create'));
+        } else {
+            $data = array(
+                'user_username' => $this->input->post('user_username',TRUE),
+                'user_pass' => password_hash($this->input->post('user_pass',TRUE), PASSWORD_DEFAULT),
+                'user_namalengkap' => $this->input->post('user_namalengkap',TRUE),
+                'user_status' => $this->input->post('user_status',TRUE),
+                'foto_user' => $foto,
+            );
+
+            $this->user->insert_user($data);
+            $this->session->set_flashdata('message', 'Tambah Data Berhasil');
+            redirect(site_url('user'));
+        }
+        $this->load->view('backend/public', $this->data);
+    }
+    
+    public function update_action(){
+        $this->_rules_user();
+        
+        $config = [
+            'upload_path' => './assets/img/fotouser',
+            'allowed_types' => 'gif|jpg|png',
+            'file_name' => round(microtime(date('dY')))
+        ];
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('foto_user')) {
+            $response = [
+                'status' => 'error',
+                'message' => $this->upload->display_errors()
+            ];
+
+            $this->session->set_flashdata('response', $response);
+        }
+
+        $data_foto = $this->upload->data();
+        $foto = $data_foto['file_name'];
+
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect(site_url('user/update/'.$this->input->post('user_id', TRUE)));
         } else {
             //cek apakah input password baru atau tidak
-            if (strip_tags($this->input->post('admin_pass', TRUE) != "")){
+            if (strip_tags($this->input->post('user_pass', TRUE) != "")){
                 $data = array(
-                    'admin_user' => $this->input->post('admin_user',TRUE),
-                    'admin_pass' => password_hash($this->input->post('admin_pass',TRUE), PASSWORD_DEFAULT),
-                    'admin_namalengkap' => $this->input->post('admin_namalengkap',TRUE),
-                    'admin_status' => $this->input->post('admin_status',TRUE),
+                    'user_user' => $this->input->post('user_user',TRUE),
+                    'user_pass' => password_hash($this->input->post('user_pass',TRUE), PASSWORD_DEFAULT),
+                    'user_namalengkap' => $this->input->post('user_namalengkap',TRUE),
+                    'user_status' => $this->input->post('user_status',TRUE),
+                    'foto_user' => $foto,
                 );
 
             }else {
                 $data = array(
-                    'admin_user' => $this->input->post('admin_user',TRUE),
-                    'admin_namalengkap' => $this->input->post('admin_namalengkap',TRUE),
-                    'admin_status' => $this->input->post('admin_status',TRUE),
+                    'user_username' => $this->input->post('user_username',TRUE),
+                    'user_namalengkap' => $this->input->post('user_namalengkap',TRUE),
+                    'user_status' => $this->input->post('user_status',TRUE),
+                    'foto_user' => $foto,
                 );
             }
-
-            $this->admin->update_admin($this->input->post('admin_id', TRUE), $data);
+            $this->user->update_user($this->input->post('user_id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Data Berhasil');
             redirect(site_url('user'));
         }
+        $this->load->view('backend/public', $this->data);
     }
-    
-    function _rules_admin()
+
+    function _rules_user()
     {
-        $this->form_validation->set_rules('admin_user', ' ', 'trim|required');
-        $this->form_validation->set_rules('admin_pass', ' ', 'trim');
-        $this->form_validation->set_rules('admin_namalengkap', ' ', 'trim|required');
-        $this->form_validation->set_rules('foto', ' ', 'trim|required');
-        $this->form_validation->set_rules('admin_status', ' ', 'trim|required');
-        $this->form_validation->set_rules('admin_id', 'admin_id', 'trim');
+        $this->form_validation->set_rules('user_username', ' ', 'trim|required');
+        $this->form_validation->set_rules('user_pass', ' ', 'trim');
+        $this->form_validation->set_rules('user_namalengkap', ' ', 'trim|required');
+        $this->form_validation->set_rules('user_status', ' ', 'trim|required');
+        $this->form_validation->set_rules('user_id', 'user_id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 

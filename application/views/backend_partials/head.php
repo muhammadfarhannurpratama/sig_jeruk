@@ -21,20 +21,11 @@
     <link href="<?php echo base_url()?>assets/css/custom_admin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/maps/jquery-jvectormap-2.0.1.css" />
 
-    <link rel="stylesheet" href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css') ?>"/>
+    <link rel="stylesheet" href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css') ?>" />
     <link href="<?php echo base_url()?>assets/css/icheck/flat/green.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/floatexamples.css" rel="stylesheet" />
     <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
     <link href="<?php echo base_url() ?>assets/public/css/styles_map.css" rel="stylesheet" />
-
-
-
-
-
-
-  
-    
-
     <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
         <![endif]-->

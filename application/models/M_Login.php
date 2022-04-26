@@ -34,11 +34,11 @@ class M_Login extends CI_Model
     public function logout()
     {
         $this->session->unset_userdata(array(
-            'admin_id' => '',
-            'admin_namalengkap' => '',
-            'admin_status' => '',
-            'admin_user' => '',
-            'admin_pass' => '',
+            'user_id' => '',
+            'user_namalengkap' => '',
+            'user_status' => '',
+            'user_username' => '',
+            'user_pass' => '',
             'loginadmin' => FALSE));
         $this->session->sess_destroy();
     }

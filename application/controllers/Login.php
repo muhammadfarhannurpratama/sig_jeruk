@@ -27,22 +27,29 @@ class Login extends CI_Controller {
             $password = strip_tags($this->input->post('logPass'));
 
             // query chek users
-            $this->db->where('admin_user',$username);
-            $users       = $this->db->get('tb_admin');
+            $this->db->where('user_username',$username);
+            $users       = $this->db->get('tb_user');
             if($users->num_rows()>0){
                 $user = $users->row_array();
-                if(password_verify($password,$user['admin_pass'])){
+                if(password_verify($password,$user['user_pass'])){
                     // retrive user data to session
                     $sess_data['loginadmin']      = TRUE;
-                    $sess_data['admin_id']          = $user['admin_id'];
-                    $sess_data['admin_namalengkap'] = $user['admin_namalengkap'];
-                    $sess_data['admin_status']      = $user['admin_status'];
-                    $sess_data['admin_user']        = $user['admin_user'];
-                    $sess_data['admin_pass']        = $user['admin_pass'];
+                    $sess_data['user_id']          = $user['user_id'];
+                    $sess_data['user_namalengkap'] = $user['user_namalengkap'];
+                    $sess_data['user_status']      = $user['user_status'];
+                    $sess_data['user_username']        = $user['user_user'];
+                    $sess_data['user_pass']        = $user['user_pass'];
 
                     $this->session->set_userdata($sess_data);
 
-                    redirect('Dashboard');
+                    // redirect('Dashboard');
+                    if ($this->session->userdata('user_status')=='Pengguna') {
+                        redirect('Home');
+                        }
+                    else{
+                        redirect('Dashboard');
+                    }
+
                 }else{
                     $this->session->set_flashdata('message', 'Username atau Password salah.');
                     redirect('login');
