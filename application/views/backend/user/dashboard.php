@@ -90,6 +90,7 @@
         </div>
 
     </div>
+
     <script type="text/javascript">
     function initMap() {
 
@@ -97,7 +98,8 @@
         var mapOptions;
         var bounds = new google.maps.LatLngBounds();
         var infoWindow = new google.maps.InfoWindow;
-        var myicon = '<?php echo base_url("assets/img/ico/jeruk.png"); ?>';
+        var myicon = '<?php echo base_url("assets/img/ico/jeruk2.png"); ?>';
+        var myicon2 = '<?php echo base_url("assets/img/ico/retail2.png"); ?>';
 
 
         var mapOptions = {
@@ -109,28 +111,69 @@
             //            center: {lat: -8.405666, lng: 115.206610}
         });
 
+        map.data.loadGeoJson("<?= base_url('geojson/Kec.semboro.geojson') ?>");
+        map.data.setStyle((feature) => {
+            let color = "grey";
+
+            return /** @type {!google.maps.Data.StyleOptions} */ {
+                fillColor: color,
+                strokeColor: color,
+                strokeWeight: 2,
+            };
+        });
+
+
         <?php
-    foreach ($lahan_data as $lahan){
-        $id_lahan           = $lahan->id_lahan;
-        $nama_pemilik       = $lahan->nama_pemilik;
-        $lokasi_lahan       = $lahan->lokasi_lahan;
-        $no_hp              = $lahan->no_hp;
-        $latitude           = $lahan->latitude;
-        $longitude          = $lahan->longitude;
-        $kecamatan_nama     = $lahan->kecamatan_nama;
+    foreach ($lahan_data as $lahan) {
+            $id_lahan           = $lahan->id_lahan;
+            $nama_pemilik       = $lahan->nama_pemilik;
+            $kecamatan          = $lahan->kecamatan_nama;
+            $lokasi_lahan       = $lahan->lokasi_lahan;
+            $no_hp              = $lahan->no_hp;
+            $latitude           = $lahan->latitude;
+            $longitude          = $lahan->longitude;
+            $kecamatan_nama     = $lahan->kecamatan_nama;
+            $foto_lahan     = $lahan->foto_lahan;
+            echo ("addMarker1($latitude, $longitude, '<b>$nama_pemilik</b>', '<br>$lokasi_lahan', '<br>$no_hp<br>', '<a href=\"lokasi/mdetail/$id_lahan\" class=\"btn btn-sm btn-info\">Detail</a>');\n");
+        }
+    ?>
 
-        echo ("addMarker($latitude, $longitude, '<b>$nama_pemilik</b>', '<br>$lokasi_lahan', '<br>$no_hp<br>', '<a href=\"lokasi/mdetail/$id_lahan\" class=\"btn btn-sm btn-info\">Detail</a>');\n");
-    }
-
+        <?php
+    foreach ($retail_data as $retail) {
+            $id_retail          = $retail->id_retail;
+            $nama_retail       = $retail->nama_retail;
+            $kecamatan          = $retail->kecamatan_nama;
+            $lokasi_retail       = $retail->lokasi_retail;
+            $no_hp              = $retail->no_hp;
+            $latitude           = $retail->latitude;
+            $longitude          = $retail->longitude;
+            $kecamatan_nama     = $retail->kecamatan_nama;
+            $foto_retail     = $retail->foto_retail;
+            echo ("addMarker2($latitude, $longitude, '<b>$nama_retail</b>', '<br>$lokasi_retail', '<br>$no_hp<br>', '<a href=\"lokasi/mdetailretail/$id_retail\" class=\"btn btn-sm btn-info\">Detail</a>');\n");
+        }
     ?>
 
         // Proses membuat marker
-        function addMarker(lat, lng, info, lokasiD, phone, detil) {
+        function addMarker1(lat, lng, info, lokasiD, phone, detil) {
             var lokasi = new google.maps.LatLng(lat, lng);
             bounds.extend(lokasi);
             var marker = new google.maps.Marker({
                 map: map,
                 icon: myicon,
+                position: lokasi
+            });
+            map.fitBounds(bounds);
+            bindInfoWindow(marker, map, infoWindow, info.concat(lokasiD, phone, detil));
+
+        }
+
+        // Proses membuat marker
+        function addMarker2(lat, lng, info, lokasiD, phone, detil) {
+            var lokasi = new google.maps.LatLng(lat, lng);
+            bounds.extend(lokasi);
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: myicon2,
                 position: lokasi
             });
             map.fitBounds(bounds);

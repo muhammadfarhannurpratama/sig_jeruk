@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller {
         $kecamatan1 = $this->kecamatan->get_total();
         $kelurahan = $this->kelurahan->get_total();
         $lahan = $this->lahan->get_all_lahan();
+        $this->data['retail_data']     = $this->retail->get_all_retail();
         $lahan1 = $this->lahan->get_total();
         $jeruk = $this->jeruk->get_total();
         

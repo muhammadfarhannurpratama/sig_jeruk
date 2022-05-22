@@ -1,6 +1,43 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="card">
+                <form action="<?php echo $action; ?>" method="post">
+                    <div class="card-body">
+                        <div class="header-logo">
+                            <a href="<?php echo base_url('/'); ?>"><img
+                                    src="<?php echo base_url('assets/img/orange2.jpg'); ?>" width="100%" alt=""
+                                    class="img-responsive"></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label>Pilih Filter</label>
+                        <select name="kecamatan" id="kecamatan" class="form-control">
+                            <option value="all">Pilih Kecamatan</option>
+                            <?php
+                           foreach ($kecamatan_data as $kecamatan) {
+                              if ($kecamatan->kecamatan_id == $this->session->userdata('kecamatan')) { ?>
+                            <!-- <option value="<?php echo $kecamatan->kecamatan_id; ?>" selected><?php echo $kecamatan->kecamatan_nama; ?></option>  -->
+                            <?php
+                                } else { ?>
+                            <!--   <option value="<?php echo $kecamatan->kecamatan_id; ?>"><?php echo $kecamatan->kecamatan_nama; ?></option> -->
+                            <?php 
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="card-body">
+                        <center><button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-filter"></i> Lihat
+                                Wilayah</button>
+                            <a href="<?php echo base_url('home'); ?>" class="btn btn-info btn-sm"><i
+                                    class="fa fa-refresh"></i> Batal</a>
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header text-white bg-info">
                     <h4>Sistem Informasi Geografis Pemetaan Lahan Jeruk<br /><?php echo $iden_data['nm_website']; ?>

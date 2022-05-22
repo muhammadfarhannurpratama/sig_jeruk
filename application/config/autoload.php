@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session', 'form_validation','table','parser','pagination','recaptcha','email');
+$autoload['libraries'] = array('database','session', 'form_validation','upload','table','parser','pagination','recaptcha','email','cart');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form','html','file','text','download','global');
+$autoload['helper'] = array('url','form','html','file','string','download','global');
 
 /*
 | -------------------------------------------------------------------
@@ -145,4 +145,7 @@ $autoload['model'] = array(
     'M_Jeruk' => 'jeruk',
     'M_Variabel' => 'variabel',
     'M_Register' => 'register',
+    'M_TransaksiRetail' => 'transaksiretail',
+    'M_TransaksiPengguna' => 'transaksipengguna',
+    'M_PesananMasuk' => 'pesananmasuk',
     );

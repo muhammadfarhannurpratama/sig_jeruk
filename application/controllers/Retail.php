@@ -73,17 +73,13 @@ class Retail extends CI_Controller {
             $this->data['lokasi_retail']     = set_value('lokasi_retail', $row->lokasi_retail);
             $this->data['no_hp']     = set_value('no_hp', $row->no_hp);
             $this->data['id_jeruk']     = set_value('id_jeruk', $row->id_jeruk);
-
-            // $this->data['luas_retail']     = set_value('luas_retail', $row->luas_retail);
-            // $this->data['jumlah_panen']     = set_value('jumlah_panen', $row->jumlah_panen);
-            $this->data['harga_jual']     = set_value('harga_jual', $row->harga_jeruk);
-           
+            $this->data['stok']     = set_value('stok', $row->stok);
+            $this->data['limitstok']     = set_value('limitstok', $row->limitstok);
+            $this->data['harga_jual']     = set_value('harga_jual', $row->harga_beli);
             $this->data['latitude']     = set_value('latitude', $row->latitude);
             $this->data['longitude']     = set_value('longitude', $row->longitude);
             $this->data['kecamatan_id']     = set_value('kecamatan_id', $row->kecamatan_id);
             $this->data['kelurahan_id']     = set_value('kelurahan_id', $row->kelurahan_id);
-
-
             $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
             $this->data['jeruk_data']   = $this->jeruk->get_all_jeruk();
             $this->data['kelurahan_data']    = $this->kelurahan->get_all_kelurahan();

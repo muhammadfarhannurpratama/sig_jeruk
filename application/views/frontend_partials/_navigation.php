@@ -9,6 +9,14 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('home'); ?>">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('lokasi'); ?>">Lokasi Lahan</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('lokasi/retail'); ?>">Lokasi
+                        Retail</a></li>
+                <?php
+                $login = $this->session->userdata('user_status');
+                if($login == 'Pengguna'){ ?>
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('pesanan_saya'); ?>">Pesanan Saya</a>
+                </li>
+                <?php }?>
                 <!--   <li class="nav-item"><a class="nav-link" href="<?php echo base_url('pencarian'); ?>">Rekomendasi Lahan</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak Kami</a></li> -->
             </ul>

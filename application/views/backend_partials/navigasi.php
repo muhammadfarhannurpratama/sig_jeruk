@@ -43,6 +43,12 @@
                                     <a href="<?php echo base_url('Dashboard')  ?>">
                                         <i class="fa fa-tachometer"></i>Dashboard</a>
                                 </li>
+                                <?php if ($this->session->userdata('user_status')=='Retail'): ?>
+                                <li>
+                                    <a href="<?php echo base_url('TransaksiPengguna/pesanan_masuk')  ?>">
+                                        <i class="fa fa-shopping-cart"></i>Pesanan Masuk</a>
+                                </li>
+                                <?php endif ?>
                                 <li>
                                     <a>
                                         <i class="fa fa-users"></i> Akun <span class="fa fa-chevron-down"></span></a>
@@ -83,16 +89,20 @@
                                 <!-- RiwayatTransaksi admin dan petani -->
                                 <?php if ($this->session->userdata('user_status')=='Administrator' || $this->session->userdata('user_status')=='Petani' ): ?>
                                 <li>
-                                    <a href="<?php echo base_url('RiwayatTransaksi')  ?>">
-                                        <i class="fa fa-tachometer"></i>Riwayat Transaksi</a>
+                                    <a href="<?php echo base_url('RiwayatPembelianRetail/list_pesanan_retail')  ?>">
+                                        <i class="fa fa-shopping-cart"></i>Riwayat Transaksi</a>
                                 </li>
                                 <?php endif ?>
 
                                 <!-- RiwayatTransaksi retail -->
                                 <?php if ($this->session->userdata('user_status')=='Retail'): ?>
                                 <li>
-                                    <a href="<?php echo base_url('RiwayatTransaksi')  ?>">
-                                        <i class="fa fa-tachometer"></i>Riwayat Transaksir</a>
+                                    <a href="<?php echo base_url('RiwayatPembelianRetail')  ?>">
+                                        <i class="fa fa-tags" aria-hidden="true"></i>Riwayat Pembelian</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('RiwayatPembelianPengguna')  ?>">
+                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>Riwayat Penjualan</a>
                                 </li>
                                 <?php endif ?>
                             </ul>

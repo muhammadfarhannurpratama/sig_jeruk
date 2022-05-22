@@ -10,17 +10,17 @@
         <div class="card-body">
             <table class="table table-hover table-striped table-bordered table-sm data1" width="100%">
                 <thead class="thead-dark">
-                <tr>
-                    <th class="text-center" width="50px">No</th>
-                    <th class="text-center" width="90px">Action</th>
-                    <th class="text-center">Nama Pemilik</th>
-                    <th class="text-center">Telepon</th>
-                    <th class="text-center">Kecamatan</th>
-                    <th class="text-center">Kelurahan/Desa</th>
-                </tr>
+                    <tr>
+                        <th class="text-center" width="50px">No</th>
+                        <th class="text-center" width="90px">Action</th>
+                        <th class="text-center">Nama Pemilik</th>
+                        <th class="text-center">Telepon</th>
+                        <th class="text-center">Kecamatan</th>
+                        <th class="text-center">Kelurahan/Desa</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <?php
+                    <?php
                 $start=0;
                 foreach ($lahan_data as $lahan)
                 {
@@ -28,7 +28,8 @@
                     <tr>
                         <td class="text-center"><?php echo ++$start ?></td>
                         <td class="text-center">
-                            <a href="<?php echo base_url('lokasi/mdetail/'.$lahan->id_lahan)?>" class="btn btn-info btn-sm"><i class="fa fa-search"></i>&nbsp;Detail</a>
+                            <a href="<?php echo base_url('lokasi/detail/'.$lahan->id_lahan)?>"
+                                class="btn btn-info btn-sm"><i class="fa fa-search"></i>&nbsp;Detail</a>
                         </td>
                         <td><?php echo $lahan->nama_pemilik; ?></td>
                         <td><?php echo $lahan->no_hp; ?></td>

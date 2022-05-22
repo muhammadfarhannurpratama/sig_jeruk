@@ -55,19 +55,19 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="<?php echo base_url('Dashboard')?>" class="btn btn-success btn-sm"><i class="fa fa-chevron-left"></i>&nbsp;Kembali</a>
+                    <a href="<?php echo base_url('home')?>" class="btn btn-success btn-sm"><i
+                            class="fa fa-chevron-left"></i>&nbsp;Kembali</a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card">
-                <div class="card-header text-white bg-info">Foto Lahan</div><center> 
-                <div class="card-body" id="">
-                <img width="300px" height="400px" src="<?php echo base_url('assets/img/fotolahan/'.$lahan->foto_lahan);?>" alt="..." >
-                </div> </center>
+                <div class="card-header text-white bg-info">Foto Lahan</div>
+                <center>
+                    <div class="card-body" id="">
+                        <img width="300px" height="400px"
+                            src="<?php echo base_url('assets/img/fotolahan/'.$lahan->foto_lahan);?>" alt="...">
+                    </div>
+                </center>
             </div>
         </div>
-        
-
-
-

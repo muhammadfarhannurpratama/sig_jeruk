@@ -68,21 +68,19 @@
                                                     aria-describedby="input-foto" accept="image/*">
                                             </div>
 
-                                            <!-- <div class="form-group">
-                                                <label for="varchar">Luas Lahan (m2)
-                                                    <?php echo form_error('luas_lahan') ?></label>
-                                                <input type="number" class="form-control" name="luas_lahan"
-                                                    id="luas_lahan" placeholder="Luas Lahan"
-                                                    value="<?php echo $luas_lahan; ?>" />
+                                            <div class="form-group">
+                                                <label for="varchar">Stok
+                                                    <?php echo form_error('stok') ?></label>
+                                                <input type="number" class="form-control" name="stok" id="stok"
+                                                    placeholder="Stok" value="<?php echo $stok; ?>" />
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="varchar">Jumlah Panen (Kg)
-                                                    <?php echo form_error('jumlah_panen') ?></label>
-                                                <input type="number" class="form-control" name="jumlah_panen"
-                                                    id="jumlah_panen" placeholder="Jumlah Panen"
-                                                    value="<?php echo $jumlah_panen; ?>" />
-                                            </div> -->
+                                                <label for="varchar">Limit Stok
+                                                    <?php echo form_error('limitstok') ?></label>
+                                                <input type="number" class="form-control" name="limitstok" id="limistok"
+                                                    placeholder="Limit Stok" value="<?php echo $limitstok; ?>" />
+                                            </div>
 
                                             <div class="form-group">
                                                 <label for="varchar">Harga Jeruk
@@ -91,7 +89,6 @@
                                                     id="harga_jual" placeholder="Harga Jeruk"
                                                     value="<?php echo $harga_jual; ?>" />
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label for="varchar">Jenis
@@ -155,7 +152,7 @@
 
                 function setMarkers(map) {
 
-                    var myicon = '<?php echo base_url("assets/img/ico/jeruk.png"); ?>';
+                    var myicon = '<?php echo base_url("assets/img/ico/retail2.png"); ?>';
                     var marker = new google.maps.Marker({
                         <?php
             if(!empty($latitude)){ ?>
