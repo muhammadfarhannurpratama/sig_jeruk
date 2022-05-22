@@ -46,17 +46,17 @@ $kd = $this->session->userdata('kdpesan');
                                     <td><?php echo $lahan->nama_pemilik ?></td>
                                     <td><?php echo $lahan->jeruk_nama ?></td>
                                     <td><?php echo $lahan->harga_jeruk ?></td>
-                                    <td><?php echo $lahan->jumlah_panen.' Ton' ?></td>
-                                    <td>
-                                        <form
+                                    <td><?php echo $lahan->jumlah_panen.' Kg' ?></td>
+                                    <td><?php echo form_open_multipart("transaksiretail/aksi_pesan/$lahan->id_lahan");?>
+                                        <!-- <form
                                             action="<?php echo base_url()?>transaksiretail/aksi_pesan/<?php echo $lahan->id_lahan ?>"
-                                            method="post">
-                                            <input type="number" name="qty" id="qty" class="form_control"
-                                                oninput="hitungtotal()" required oninput="setCustomValidity('')"
-                                                value="<?= $jml?>">
-                                            <input type="hidden" name="user_id" value="<?php echo $lahan->user_id ?>">
-                                            <input type="hidden" name="harga" id="harga"
-                                                value="<?php echo $lahan->harga_jeruk ?>">
+                                            method="post" enctype="multipart/form-data"> -->
+                                        <input type="number" name="qty" id="qty" class="form_control"
+                                            oninput="hitungtotal()" required oninput="setCustomValidity('')"
+                                            value="<?= $jml?>">
+                                        <input type="hidden" name="user_id" value="<?php echo $lahan->user_id ?>">
+                                        <input type="hidden" name="harga" id="harga"
+                                            value="<?php echo $lahan->harga_jeruk ?>">
                                     </td>
                                     <td>
                                         <input type="number" id="subtotal" name="subtotal" value="<?= $subtotal?>"

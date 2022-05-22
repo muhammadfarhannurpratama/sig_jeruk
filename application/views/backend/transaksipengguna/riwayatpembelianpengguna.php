@@ -79,8 +79,8 @@
                                     <td><?php echo $data->alamat ?></td>
                                     <td><?php echo 'Rp. '.number_format($data->total_bayar) ?></td>
                                     <td>
-                                        <a href=".asset/bukti_bayar/<?php echo $data->bukti_bayar ?>">
-                                            <img src=".asset/bukti_bayar/<?php echo $data->bukti_bayar ?>"
+                                        <a href="<?php echo base_url('assets/img/buktibayar/'.$data->bukti_bayar);?>">
+                                            <img src="<?php echo base_url('assets/img/buktibayar/'.$data->bukti_bayar);?>"
                                                 style="height: 100px; height: 100px;">
                                         </a>
                                     </td>

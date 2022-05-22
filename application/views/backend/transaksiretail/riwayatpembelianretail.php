@@ -99,8 +99,8 @@
                                     <td><?php echo 'Rp. '.number_format($data->jumlah_bayar) ?></td>
                                     <td>
                                         <a
-                                            href="<?php echo base_url('assets/img/bukti_bayar/'.$data->bukti_pembayaran);?>">
-                                            <img src="<?php echo base_url('assets/img/bukti_bayar/'.$data->bukti_pembayaran);?>"
+                                            href="<?php echo base_url('assets/img/buktibayar/'.$data->bukti_pembayaran);?>">
+                                            <img src="<?php echo base_url('assets/img/buktibayar/'.$data->bukti_pembayaran);?>"
                                                 style="height: 100px; height: 100px;">
                                     </td>
                                     <td><?php echo $total; ?></td>

@@ -243,7 +243,7 @@
                                         </table>
 
                                         <img class="img-fluid pad"
-                                            src="<?= base_url('assets/bukti_bayar/'.$value->bukti_bayar) ?>" alt="">
+                                            src="<?= base_url('assets/img/buktibayar/'.$value->bukti_bayar) ?>" alt="">
                                     </div>
 
                                 </div>

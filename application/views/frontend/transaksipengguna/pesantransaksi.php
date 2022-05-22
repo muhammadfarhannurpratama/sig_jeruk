@@ -35,9 +35,6 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                         </td>
                         <td> <?php echo $retail->jeruk_nama; ?></td>
                         <td>
-                            <!-- <form
-                                action="<?php echo base_url()?>transaksipengguna/aksi_pesan/<?php echo $retail->id_retail ?>"
-                                method="post"> -->
                             <form action="<?php echo base_url('transaksipengguna/checkout')?>" method="post">
                                 <input type="number" name="qty" id="qty" class="form_control" oninput="hitungtotal()"
                                     required oninput="setCustomValidity('')" value="<?= $jml?>">

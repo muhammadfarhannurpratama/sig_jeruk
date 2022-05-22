@@ -39,15 +39,18 @@ class Pesanan_saya extends CI_Controller
         array('required' => '%s Harus Diisi')
         );
 
+        
+		// setting konfigurasi upload
+        
         $config = [
-            'upload_path' => './assets/bukti_bayar/',
+            'upload_path' => './assets/img/buktibayar',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => round(microtime(date('dY')))
+            'file_name' => date('Ymd').strtoupper(random_string('alnum', 8))
         ];
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('bukti_bayar')) {
+        if (!$this->upload->do_upload('foto')) {
             $response = [
                 'status' => 'error',
                 'message' => $this->upload->display_errors()

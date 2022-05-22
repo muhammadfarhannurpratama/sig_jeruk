@@ -37,14 +37,15 @@ class TransaksiRetail extends CI_Controller {
 		$dt = $this->db->get('tb_lahan')->row();
 		$kdpesan = $this->session->userdata('kdpesan');
 		$qty = $this->input->post('qty');
+		$harga = $this->input->post('harga');
 		$user_id = $this->input->post('user_id');
-        $total = $qty*$dt->harga_jeruk;
+        $total = $qty*$harga;
 		$data = array(
 			'kode_keranjangretail' => $kdpesan,
             'id_lahan' => $id,
-            'harga' => $dt->harga_jeruk,
+            'harga' => $harga,
             'qty' => $qty,
-            'subtotal' => $qty*$dt->harga_jeruk,
+            'subtotal' => $harga,
 		);
 		$this->db->insert('keranjang_retail', $data);
 
@@ -57,16 +58,27 @@ class TransaksiRetail extends CI_Controller {
 		$jumlah = $this->input->post('jumlah');
 		$kdpesan = $this->session->userdata('kdpesan');
 		// setting konfigurasi upload
-            $nmfile = "bukti_".$kdpesan;
-            $config['upload_path'] = '.assets/img/bukti_bayar/';
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
-            $config['file_name'] = $nmfile;
-            // load library upload
-            $this->load->library('upload', $config);
-            // upload gambar 1
-            $this->upload->do_upload('foto');
-            $result1 = $this->upload->data();
-            $result = array('gambar'=>$result1);
+        
+        $config = [
+            'upload_path' => './assets/img/buktibayar',
+            'allowed_types' => 'gif|jpg|png',
+            'file_name' => date('Ymd').strtoupper(random_string('alnum', 8))
+        ];
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('foto')) {
+            $response = [
+                'status' => 'error',
+                'message' => $this->upload->display_errors()
+            ];
+
+            $this->session->set_flashdata('response', $response);
+        }
+
+        $data_foto = $this->upload->data();
+        $foto = $data_foto['file_name'];
+        $id = $this->session->userdata('user_id');
 			$data1 = array(
 				'kode_transaksiretail' => $kdpesan,
 	            'tanggal_beli' => date('Y-m-d'),
@@ -74,7 +86,8 @@ class TransaksiRetail extends CI_Controller {
             	'nama_retail' => $nama_retail,
             	'alamat_pengiriman' => $alamat,
             	'jumlah_bayar' => $jumlah,
-            	'bukti_pembayaran' => $result['gambar']['file_name'],
+            	'id_retail' => $id,
+            	'bukti_pembayaran' => $foto,
 			);
 			$this->db->insert('transaksi_retail', $data1);
             $this->session->unset_userdata('kdpesan');
