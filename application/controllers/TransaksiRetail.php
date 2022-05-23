@@ -85,7 +85,6 @@ class TransaksiRetail extends CI_Controller {
 	            'kode_keranjangretail' => $kdpesan,
             	'nama_retail' => $nama_retail,
             	'alamat_pengiriman' => $alamat,
-            	'jumlah_bayar' => $jumlah,
             	'id_retail' => $id,
             	'bukti_pembayaran' => $foto,
 			);

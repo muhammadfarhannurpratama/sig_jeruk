@@ -261,7 +261,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title"><?= $value->no_order ?></h4>
+                                        <h4 class="modal-title"><?= $value->kode_transaksipengguna ?></h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

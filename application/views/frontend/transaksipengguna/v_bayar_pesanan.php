@@ -76,7 +76,15 @@
 
                 <div class="form-group">
                     <label>Nama Bank</label>
-                    <input name="nama_bank" class="form-control" placeholder="Nama Bank" required>
+                    <select name="nama_bank" class="form-control" required>
+                        <option>
+                            <---Pilih Bank--->
+                        </option>
+                        <option value="BRI">BRI</option>
+                        <option value="BRI">BRI</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BSI">BSI</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

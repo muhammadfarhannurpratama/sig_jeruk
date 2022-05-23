@@ -97,12 +97,6 @@ $kd = $this->session->userdata('kdpesan');
                                 name="alamat"><?php echo $this->session->userdata('alamat');?></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Jumlah pembayaran</label>
-                            <p> <?php echo 'Total bayar : '. $bayar='<div name="bayar" id="bayar"></div>'; 
-                            ?></p>
-                            <input type="text" name="jumlah" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>Upload bukti pembayaran</label>
                             <input type="file" name="foto" class="form-control">
                         </div>

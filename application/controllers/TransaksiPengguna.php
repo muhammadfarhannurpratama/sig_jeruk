@@ -74,7 +74,7 @@ class TransaksiPengguna extends CI_Controller {
     $i = 1;
     $kode_detailtransaksi = $this->db->insert_id();
     foreach ($this->cart->contents() as $items) {
-        $detail_data = array('no_order'    => $this->input->post('no_order'),
+        $detail_data = array(
                              'kode_detailtransaksi'=> $kode_detailtransaksi,
                              'kode_transaksipengguna'=> $this->input->post('no_order'),
                              'id_retail'   => $items['id'], 

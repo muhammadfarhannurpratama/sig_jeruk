@@ -63,7 +63,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <?php if ($this->session->userdata('user_status')=='Administrator' || $this->session->userdata('user_status')=='Petani' ): ?>
+                                <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
                                 <li><a><i class="fa fa-map-marker"></i> Wilayah <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
@@ -87,7 +87,7 @@
                                 <?php endif ?>
 
                                 <!-- RiwayatTransaksi admin dan petani -->
-                                <?php if ($this->session->userdata('user_status')=='Administrator' || $this->session->userdata('user_status')=='Petani' ): ?>
+                                <?php if ($this->session->userdata('user_status')=='Petani' ): ?>
                                 <li>
                                     <a href="<?php echo base_url('RiwayatPembelianRetail/list_pesanan_retail')  ?>">
                                         <i class="fa fa-shopping-cart"></i>Riwayat Transaksi</a>

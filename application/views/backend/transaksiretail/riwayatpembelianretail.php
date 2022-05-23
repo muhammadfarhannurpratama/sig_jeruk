@@ -27,9 +27,8 @@
                                     <th>Kode Pesanan</th>
                                     <th>Tanggal Pesan</th>
                                     <th>Detail Pesanan</th>
-                                    <th>Nama Supplier</th>
+                                    <th>Nama Retail</th>
                                     <th>Alamat Pengiriman</th>
-                                    <th>di bayar</th>
                                     <th>Bukti Pembayaran</th>
                                     <th>Total Bayar</th>
                                     <th>Status</th>
@@ -38,6 +37,7 @@
                             </thead>
                             <tbody>
                                 <?php
+                                        $total = 0;
                                         $start = 0;
                                         $id = $this->session->userdata('user_id');
                                         $data_pembelian = $this->db->query("SELECT * FROM transaksi_retail a 
@@ -61,54 +61,38 @@
                                         <table class="table table-bordered">
                                             <tr>
                                                 <th>Nama Petani</th>
-                                                <th>Nama ikan</th>
+                                                <th>Nama Jeruk</th>
                                                 <th>Harga</th>
                                                 <th>Qty</th>
                                                 <th>Subtotal</th>
                                             </tr>
-                                            <?php 
-                                            $total = 0;
-                                            $sql = $this->db->query("SELECT * FROM transaksi_retail a 
-                                            JOIN keranjang_retail b ON a.kode_keranjangretail=b.kode_keranjangretail 
-                                            JOIN tb_lahan c ON b.id_lahan=c.id_lahan 
-                                            JOIN tb_kecamatan d ON c.kecamatan_id=d.kecamatan_id 
-                                            JOIN tb_kelurahan e ON c.kelurahan_id=e.kelurahan_id 
-                                            JOIN tb_user f ON c.user_id=f.user_id 
-                                            JOIN tb_jeruk g ON c.id_jeruk=g.id_jeruk
-                                            JOIN tb_retail h ON a.id_retail=h.id_retail
-                                            JOIN tb_user i ON h.user_id=i.user_id
-                                            WHERE i.user_id='$id'");
-                                            foreach ($sql->result() as $row) {
-                                            ?>
                                             <tr>
                                                 <td><?php
-                                                echo $row->nama_pemilik; ?></td>
+                                                echo $data->nama_pemilik; ?></td>
                                                 <td><?php 
-                                                echo $row->jeruk_nama; ?></td>
-                                                <td><?php echo 'Rp. '.number_format($row->harga) ?></td>
-                                                <td><?php echo $row->qty ?></td>
-                                                <td><?php echo 'Rp. '.number_format($row->subtotal) ?></td>
+                                                echo $data->jeruk_nama; ?></td>
+                                                <td><?php echo 'Rp. '.number_format($data->harga) ?></td>
+                                                <td><?php echo $data->qty ?></td>
+                                                <td><?php echo 'Rp. '.number_format($data->subtotal) ?></td>
                                             </tr>
 
-                                            <?php $total = $total + $row->subtotal; ?>
-                                            <?php } ?>
+                                            <?php $total = $total + $data->subtotal; ?>
                                         </table>
                                     </td>
                                     <td><?php echo $data->nama_retail ?></td>
                                     <td><?php echo $data->alamat_pengiriman ?></td>
-                                    <td><?php echo 'Rp. '.number_format($data->jumlah_bayar) ?></td>
                                     <td>
                                         <a
                                             href="<?php echo base_url('assets/img/buktibayar/'.$data->bukti_pembayaran);?>">
                                             <img src="<?php echo base_url('assets/img/buktibayar/'.$data->bukti_pembayaran);?>"
                                                 style="height: 100px; height: 100px;">
                                     </td>
-                                    <td><?php echo $total; ?></td>
+                                    <td><?php echo 'Rp. '.number_format($total); ?></td>
                                     <td><?php 
                                         if ($data->status_pesanan == 't') {
-                                            ?><b>Belum disetujui</b><?php
+                                            ?><b>Belum dikonfirmasi</b><?php
                                         } elseif ($data->status_pesanan == 'y') {
-                                            ?><b>disetujui</b><?php
+                                            ?><b>dikonfirmasi</b><?php
                                         }
                                         ?></td>
                                     <!-- <td style="text-align:center" width="200px">

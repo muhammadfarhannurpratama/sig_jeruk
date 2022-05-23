@@ -13,7 +13,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <form action="<?php echo $action; ?>" method="post"
                                             enctype="multipart/form-data">
                                             <div class="form-group">
@@ -120,73 +120,10 @@
                                             <a href="<?php echo site_url('Retail') ?>"
                                                 class="btn btn-default">Cancel</a>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div id="map2"></div>
-                                        </form>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-
-                <script type="text/javascript">
-                var map;
-
-                function initMap() {
-                    map = new google.maps.Map(document.getElementById('map2'), {
-                        zoom: 11,
-                        //center: {lat: -8.134969, lng: 113.224538}
-                        center: {
-                            lat: -8.1782771,
-                            lng: 113.372462
-                        }
-
-                    });
-                    setMarkers(map);
-
-                    var input = document.getElementById('kupva_alamat');
-                    var autocomplete = new google.maps.places.Autocomplete(input);
-                }
-
-                function setMarkers(map) {
-
-                    var myicon = '<?php echo base_url("assets/img/ico/retail2.png"); ?>';
-                    var marker = new google.maps.Marker({
-                        <?php
-            if(!empty($latitude)){ ?>
-                        position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
-                        <?php
-            }
-            else { ?>
-                        // position : {lat: -8.134969, lng: 113.224538},
-                        position: {
-                            lat: -8.1782771,
-                            lng: 113.372462
-                        },
-
-                        <?php
-            }
-            ?>
-                        map: map,
-                        icon: myicon,
-                        draggable: true
-                    });
-
-                    google.maps.event.addDomListener(window, 'load', initMap);
-
-                    google.maps.event.addListener(marker, 'drag', function() {
-                        updateMarkerPosition(marker.getPosition());
-                    });
-
-                }
-
-                function updateMarkerPosition(latLng) {
-                    document.getElementById('latitude').value = [latLng.lat()]
-                    document.getElementById('longitude').value = [latLng.lng()]
-                }
-                </script>
-                <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB58hrOKwzUWcdyUeUqBg8Y36ofDB96JZI&callback=initMap"
-                    type="text/javascript"></script>

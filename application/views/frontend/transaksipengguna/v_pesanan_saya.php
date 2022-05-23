@@ -212,7 +212,7 @@
                 Apakah Anda Yakin Pesanan Sudah Diterima ?
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button> -->
                 <a href="<?= base_url('pesanan_saya/diterima/'.$value->kode_transaksipengguna) ?>"
                     class="btn btn-primary">Ya</a>
             </div>

@@ -27,7 +27,7 @@
                                     <th>Kode Pesanan</th>
                                     <th>Tanggal Pesan</th>
                                     <th>Detail Pesanan</th>
-                                    <th>Nama Supplier</th>
+                                    <th>Nama Pelanggan</th>
                                     <th>Alamat Pengiriman</th>
                                     <th>di bayar</th>
                                     <th>Bukti Pembayaran</th>
@@ -39,6 +39,7 @@
                             <tbody>
                                 <?php
                                         $start = 0;
+                                        $total = 0;
                                         foreach ($data_pembelian as $data)
                                         {
                                             ?>
@@ -49,30 +50,25 @@
                                     <td>
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th>Nama Petani</th>
-                                                <th>Nama ikan</th>
+                                                <th>Nama Retail</th>
+                                                <th>Nama Jeruk</th>
                                                 <th>Harga</th>
                                                 <th>Qty</th>
                                                 <th>Subtotal</th>
                                             </tr>
-                                            <?php 
-                                            $total = 0;
-                                            foreach ($data_pesanan as $row) {
-                                            ?>
                                             <tr>
                                                 <td><?php
-                                                echo $row->nama_retail; ?></td>
+                                                echo $data->nama_retail; ?></td>
                                                 <td><?php 
-                                                echo $row->jeruk_nama; ?></td>
-                                                <td><?php echo 'Rp. '.number_format($row->harga) ?></td>
-                                                <td><?php echo $row->qty ?></td>
+                                                echo $data->jeruk_nama; ?></td>
+                                                <td><?php echo 'Rp. '.number_format($data->harga) ?></td>
+                                                <td><?php echo $data->qty ?></td>
                                                 <td><?php 
-                                                $subtotal = $row->harga * $row->qty;
+                                                $subtotal = $data->harga * $data->qty;
                                                 echo 'Rp. '.number_format($subtotal) ?></td>
                                             </tr>
 
                                             <?php $total = $total + $subtotal; ?>
-                                            <?php } ?>
                                         </table>
                                     </td>
                                     <td><?php echo $data->nama_pelanggan ?></td>
@@ -84,7 +80,7 @@
                                                 style="height: 100px; height: 100px;">
                                         </a>
                                     </td>
-                                    <td><?php echo $total; ?></td>
+                                    <td><?php echo 'Rp. '.number_format($total); ?></td>
                                     <td><?php 
                                         if ($data->status_order == '0') {
                                             ?><b>Belum Bayar</b><?php

@@ -38,6 +38,8 @@ class Retail extends CI_Controller {
         $this->data['action']       = site_url('retail/create_action');
         $this->data['id_retail']      = set_value('id_retail');
         $this->data['nama_retail']     = set_value('nama_retail');
+        $this->data['stok']     = set_value('stok');
+        $this->data['limitstok']     = set_value('limitstok');
         $this->data['lokasi_retail']     = set_value('lokasi_retail');
         $this->data['no_hp']     = set_value('no_hp');
         $this->data['id_jeruk']     = set_value('id_jeruk');

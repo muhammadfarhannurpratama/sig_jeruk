@@ -19,7 +19,8 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                     <tr>
                         <th>No Order</th>
                         <th>Nama Retail</th>
-                        <th>Nama Barang</th>
+                        <th>Nama Jeruk</th>
+                        <th>Stok</th>
                         <th width="100px">Jumlah</th>
                         <th>Berat</th>
                         <th style="text-align:right">Harga</th>
@@ -34,6 +35,10 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                             <?php echo $retail->nama_retail; ?>
                         </td>
                         <td> <?php echo $retail->jeruk_nama; ?></td>
+                        <td> <?php $stok = $retail->stok;
+                            $stoklimit = $retail->limitstok;
+                            $stokjual = $stok - $stoklimit; 
+                            echo $stokjual; ?></td>
                         <td>
                             <form action="<?php echo base_url('transaksipengguna/checkout')?>" method="post">
                                 <input type="number" name="qty" id="qty" class="form_control" oninput="hitungtotal()"
