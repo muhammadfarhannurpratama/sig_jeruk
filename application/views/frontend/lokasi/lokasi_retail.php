@@ -15,8 +15,8 @@
                         <th class="text-center" width="90px">Action</th>
                         <th class="text-center">Nama Retail</th>
                         <th class="text-center">Telepon</th>
-                        <th class="text-center">Kecamatan</th>
-                        <th class="text-center">Kelurahan/Desa</th>
+                        <th class="text-center">Lokasi Retail</th>
+                        <th class="text-center">Nama Jeruk</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +33,8 @@
                         </td>
                         <td><?php echo $retail->nama_retail; ?></td>
                         <td><?php echo $retail->no_hp; ?></td>
-                        <td><?php echo $retail->kecamatan_nama; ?></td>
-                        <td><?php echo $retail->kelurahan_nama; ?></td>
+                        <td><?php echo $retail->lokasi_retail; ?></td>
+                        <td><?php echo $retail->jeruk_nama; ?></td>
                     </tr>
                     <?php
                 }

@@ -32,7 +32,6 @@ class Retail extends CI_Controller {
 
     public function create(){
 
-       
         $this->data['title'] = 'Tambah Data Retail';
         $this->data['button']       = 'Tambah Data';
         $this->data['action']       = site_url('retail/create_action');
@@ -43,20 +42,14 @@ class Retail extends CI_Controller {
         $this->data['lokasi_retail']     = set_value('lokasi_retail');
         $this->data['no_hp']     = set_value('no_hp');
         $this->data['id_jeruk']     = set_value('id_jeruk');
-
-        // $this->data['stok']     = set_value('stok');
-        // $this->data['harga_beli']     = set_value('harga_beli');
+        $this->data['berat']     = set_value('berat');
+        $this->data['harga_beli']     = set_value('harga_beli');
         $this->data['harga_jual']      = set_value('harga_jual');
 
        
         $this->data['latitude']     = set_value('latitude');
         $this->data['longitude']     = set_value('longitude');
-        $this->data['kecamatan_id']     = set_value('kecamatan_id');
-        $this->data['kelurahan_id']     = set_value('kelurahan_id');
-
-        $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
         $this->data['jeruk_data']   = $this->jeruk->get_all_jeruk();
-        $this->data['kelurahan_data']    = $this->kelurahan->get_all_kelurahan();
 
 
         $this->data['main_view']	= "backend/retail/retail_form";
@@ -75,16 +68,14 @@ class Retail extends CI_Controller {
             $this->data['lokasi_retail']     = set_value('lokasi_retail', $row->lokasi_retail);
             $this->data['no_hp']     = set_value('no_hp', $row->no_hp);
             $this->data['id_jeruk']     = set_value('id_jeruk', $row->id_jeruk);
+            $this->data['berat']     = set_value('berat', $row->berat);
             $this->data['stok']     = set_value('stok', $row->stok);
             $this->data['limitstok']     = set_value('limitstok', $row->limitstok);
-            $this->data['harga_jual']     = set_value('harga_jual', $row->harga_beli);
+            $this->data['harga_jual']     = set_value('harga_jual', $row->harga_jual);
+            $this->data['harga_beli']     = set_value('harga_beli', $row->harga_beli);
             $this->data['latitude']     = set_value('latitude', $row->latitude);
             $this->data['longitude']     = set_value('longitude', $row->longitude);
-            $this->data['kecamatan_id']     = set_value('kecamatan_id', $row->kecamatan_id);
-            $this->data['kelurahan_id']     = set_value('kelurahan_id', $row->kelurahan_id);
-            $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
             $this->data['jeruk_data']   = $this->jeruk->get_all_jeruk();
-            $this->data['kelurahan_data']    = $this->kelurahan->get_all_kelurahan();
 
             $this->data['main_view']	= "backend/retail/retail_form";
         } else {
@@ -138,13 +129,13 @@ class Retail extends CI_Controller {
                 'lokasi_retail' => $this->input->post('lokasi_retail',TRUE),
                 'no_hp' => $this->input->post('no_hp',TRUE),
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
-                // 'luas_retail' => $this->input->post('luas_retail',TRUE),
+                'berat' => $this->input->post('berat',TRUE),
+                'stok' => $this->input->post('stok',TRUE),
+                'limitstok' => $this->input->post('limitstok',TRUE),
                 'harga_jual' => $this->input->post('harga_jual',TRUE),
-                // 'harga_beli' => $this->input->post('harga_beli',TRUE),
+                'harga_beli' => $this->input->post('harga_beli',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
-                'kecamatan_id' => $this->input->post('kecamatan_id',TRUE),
-                'kelurahan_id' => $this->input->post('kelurahan_id',TRUE),
                 'foto_retail' => $foto,
             );
 
@@ -186,13 +177,13 @@ class Retail extends CI_Controller {
                 'lokasi_retail' => $this->input->post('lokasi_retail',TRUE),
                 'no_hp' => $this->input->post('no_hp',TRUE),
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
-                // 'luas_retail' => $this->input->post('luas_retail',TRUE),
-                // 'jumlah_panen' => $this->input->post('jumlah_panen',TRUE),
+                'berat' => $this->input->post('berat',TRUE),
+                'stok' => $this->input->post('stok',TRUE),
+                'limitstok' => $this->input->post('limitstok',TRUE),
                 'harga_jual' => $this->input->post('harga_jual',TRUE),
+                'harga_beli' => $this->input->post('harga_beli',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
-                'kecamatan_id' => $this->input->post('kecamatan_id',TRUE),
-                'kelurahan_id' => $this->input->post('kelurahan_id',TRUE),
                 'foto_retail' => $foto,
             );
 
@@ -210,13 +201,14 @@ class Retail extends CI_Controller {
         $this->form_validation->set_rules('no_hp', ' ', 'trim');
         $this->form_validation->set_rules('id_jeruk', ' ', 'trim');
 
-        // $this->form_validation->set_rules('luas_retail', ' ', 'trim|required');
-        // $this->form_validation->set_rules('jumlah_panen', ' ', 'trim|required');
+        $this->form_validation->set_rules('berat', ' ', 'trim|required');
+        $this->form_validation->set_rules('stok', ' ', 'trim|required');
+        $this->form_validation->set_rules('limitstok', ' ', 'trim|required');
+        $this->form_validation->set_rules('harga_beli', ' ', 'trim|required');
         $this->form_validation->set_rules('harga_jual', ' ', 'trim|required');
        
         $this->form_validation->set_rules('longitude', ' ', 'trim|required');
-        $this->form_validation->set_rules('kecamatan_id', ' ', 'trim|required');
-        $this->form_validation->set_rules('kelurahan_id', ' ', 'trim|required');
+        $this->form_validation->set_rules('latitude', ' ', 'trim|required');
 
         $this->form_validation->set_rules('id_retail', 'id_retail', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

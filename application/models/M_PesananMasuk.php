@@ -64,9 +64,7 @@ public function detail_pesanan($kode_transaksipengguna)
     $this->db->from('transaksi_pengguna');
     $this->db->join('detail_transaksipengguna', 'detail_transaksipengguna.kode_transaksipengguna = transaksi_pengguna.kode_transaksipengguna', 'left');
     $this->db->join('tb_retail', 'detail_transaksipengguna.id_retail = tb_retail.id_retail', 'left');
-    $this->db->join('tb_kecamatan', 'tb_retail.kecamatan_id = tb_kecamatan.kecamatan_id', 'left');
     $this->db->join('tb_jeruk', 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left');
-    $this->db->join('tb_kelurahan', 'tb_retail.kelurahan_id = tb_kelurahan.kelurahan_id', 'left');
     $this->db->where('transaksi_pengguna.kode_transaksipengguna', $kode_transaksipengguna);
     return $this->db->get()->row();      
 }
@@ -77,9 +75,7 @@ public function detail_transaksi($kode_transaksipengguna)
     $this->db->from('transaksi_pengguna');
     $this->db->join('detail_transaksipengguna', 'detail_transaksipengguna.kode_transaksipengguna = transaksi_pengguna.kode_transaksipengguna', 'left');
     $this->db->join('tb_retail', 'detail_transaksipengguna.id_retail = tb_retail.id_retail', 'left');
-    $this->db->join('tb_kecamatan', 'tb_retail.kecamatan_id = tb_kecamatan.kecamatan_id', 'left');
     $this->db->join('tb_jeruk', 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left');
-    $this->db->join('tb_kelurahan', 'tb_retail.kelurahan_id = tb_kelurahan.kelurahan_id', 'left');
     $this->db->where('transaksi_pengguna.kode_transaksipengguna', $kode_transaksipengguna);
     return $this->db->get()->result();      
 } 

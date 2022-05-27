@@ -57,6 +57,8 @@ $kd = $this->session->userdata('kdpesan');
                                         <input type="hidden" name="user_id" value="<?php echo $lahan->user_id ?>">
                                         <input type="hidden" name="harga" id="harga"
                                             value="<?php echo $lahan->harga_jeruk ?>">
+                                        <input type="hidden" id="stok_sekarang" name="stok_sekarang"
+                                            value="<?= $lahan->jumlah_panen ?>">
                                     </td>
                                     <td>
                                         <input type="number" id="subtotal" name="subtotal" value="<?= $subtotal?>"
@@ -85,7 +87,7 @@ $kd = $this->session->userdata('kdpesan');
                     <div class="x_content">
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input type="text" name="namaretail" class="form-control">
+                            <input type="text" name="namaretail" class="form-control" required>
                             <input type="hidden" name="username"
                                 value="<?php echo $this->session->userdata('username');?>">
                             <input type="hidden" name="kdpesan"
@@ -93,12 +95,12 @@ $kd = $this->session->userdata('kdpesan');
                         </div>
                         <div class="form-group">
                             <label>Alamat Pengiriman</label>
-                            <textarea class="form-control" rows="3"
-                                name="alamat"><?php echo $this->session->userdata('alamat');?></textarea>
+                            <textarea class="form-control" rows="3" name="alamat"
+                                required><?php echo $this->session->userdata('alamat');?></textarea>
                         </div>
                         <div class="form-group">
                             <label>Upload bukti pembayaran</label>
-                            <input type="file" name="foto" class="form-control">
+                            <input type="file" name="foto" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Pesan</button>
@@ -122,6 +124,16 @@ $kd = $this->session->userdata('kdpesan');
 </div>
 <script>
 function hitungtotal() {
+
+    //menghitung max stok
+    var stok_sekarang = parseInt(document.getElementById("stok_sekarang").value)
+    var qty = parseInt(document.getElementById("qty").value)
+    if (stok_sekarang < qty) {
+        alert('stok tidak tersedia! stok tersedia : ' + stok_sekarang)
+        window.location.reload();
+    } else {}
+
+
     var gTotal = parseInt(document.getElementById("qty").value) * parseInt($(
             'input[name="harga"]')
         .val());
@@ -131,5 +143,6 @@ function hitungtotal() {
 
     document.getElementById("total").innerHTML = gTotal;
     document.getElementById("bayar").innerHTML = gTotal;
+
 }
 </script>

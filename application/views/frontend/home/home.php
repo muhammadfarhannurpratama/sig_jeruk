@@ -66,12 +66,10 @@ function initMap() {
     foreach ($retail_data as $retail) {
             $id_retail          = $retail->id_retail;
             $nama_retail       = $retail->nama_retail;
-            $kecamatan          = $retail->kecamatan_nama;
             $lokasi_retail       = $retail->lokasi_retail;
             $no_hp              = $retail->no_hp;
             $latitude           = $retail->latitude;
             $longitude          = $retail->longitude;
-            $kecamatan_nama     = $retail->kecamatan_nama;
             $foto_retail     = $retail->foto_retail;
             echo ("addMarker2($latitude, $longitude, '<b>$nama_retail</b>', '<br>$lokasi_retail', '<br>$no_hp<br>', '<a href=\"lokasi/detailretail/$id_retail\" class=\"btn btn-sm btn-info\">Detail</a>');\n");
         }

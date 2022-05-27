@@ -20,14 +20,6 @@
                                 <td><?php echo $retail->nama_retail; ?></td>
                             </tr>
                             <tr>
-                                <th width="20%">Kecamatan</th>
-                                <td><?php echo $retail->kecamatan_nama; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="20%">Kelurahan / Desa</th>
-                                <td><?php echo $retail->kelurahan_nama; ?></td>
-                            </tr>
-                            <tr>
                                 <th width="20%">Alamat</th>
                                 <td><?php echo $retail->lokasi_retail; ?></td>
                             </tr>
@@ -38,6 +30,10 @@
                             <tr>
                                 <th width="20%">Stok</th>
                                 <td><?php echo $retail->stok; ?></td>
+                            </tr>
+                            <tr>
+                                <th width="20%">Berat</th>
+                                <td><?php echo $retail->berat; ?></td>
                             </tr>
                             <tr>
                                 <th width="20%">Limit Stok</th>

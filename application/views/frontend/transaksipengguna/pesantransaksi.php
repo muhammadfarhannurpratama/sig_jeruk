@@ -38,7 +38,8 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                         <td> <?php $stok = $retail->stok;
                             $stoklimit = $retail->limitstok;
                             $stokjual = $stok - $stoklimit; 
-                            echo $stokjual; ?></td>
+                            echo $stokjual; 
+                            ?></td>
                         <td>
                             <form action="<?php echo base_url('transaksipengguna/checkout')?>" method="post">
                                 <input type="number" name="qty" id="qty" class="form_control" oninput="hitungtotal()"
@@ -50,6 +51,12 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                                 <input type="hidden" name="id" value="<?php echo $retail->id_retail ?>">
                                 <input type="hidden" name="price" value="<?php echo $retail->harga_jual ?>">
                                 <input type="hidden" name="name" value="<?php echo $retail->jeruk_nama ?>">
+                                <?php 
+                                $stok = $retail->stok;
+                                $stoklimit = $retail->limitstok;
+                                $stokjual = $stok - $stoklimit;
+                                echo "<input type='hidden' id='stok_sekarang' name='stok_sekarang' value='$stokjual'>";
+                                ?>
                         </td>
                         <td class="text-center"><?= $retail->berat ?> Kg</td>
                         <td style="text-align:right">Rp. <?php echo number_format($retail->harga_jual); ?></td>
@@ -87,6 +94,16 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
 
 <script>
 function hitungtotal() {
+
+
+    //menghitung max stok
+    var stok_sekarang = parseInt(document.getElementById("stok_sekarang").value)
+    var qty = parseInt(document.getElementById("qty").value)
+    if (stok_sekarang < qty) {
+        alert('stok tidak tersedia! stok tersedia : ' + stok_sekarang)
+        window.location.reload();
+    } else {}
+
     var gTotal = parseInt(document.getElementById("qty").value) * parseInt($(
             'input[name="harga"]')
         .val());

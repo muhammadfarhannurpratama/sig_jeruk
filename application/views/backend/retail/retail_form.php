@@ -24,32 +24,6 @@
                                                     value="<?php echo $nama_retail; ?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label for="varchar">Kecamatan
-                                                    <?php echo form_error('kecamatan_id') ?></label>
-                                                <select name="kecamatan_id" id="kecamatan_id" class="form-control">
-                                                    <?php
-                                            foreach ($kecamatan_data as $kecamatan){ ?>
-                                                    <option value="<?php echo $kecamatan->kecamatan_id; ?>">
-                                                        <?php echo $kecamatan->kecamatan_nama; ?></option>
-                                                    <?php
-                                            }
-                                            ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="varchar">Kelurahan/Desa
-                                                    <?php echo form_error('kecamatan_id') ?></label>
-                                                <select name="kelurahan_id" id="kelurahan_id" class="form-control">
-                                                    <?php
-                                            foreach ($kelurahan_data as $kelurahan){ ?>
-                                                    <option value="<?php echo $kelurahan->kelurahan_id; ?>">
-                                                        <?php echo $kelurahan->kelurahan_nama; ?></option>
-                                                    <?php
-                                            }
-                                            ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
                                                 <label
                                                     for="varchar">Jalan<?php echo form_error('lokasi_retail') ?></label>
                                                 <input type="text" class="form-control" name="lokasi_retail"
@@ -69,6 +43,12 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="varchar">Berat
+                                                    <?php echo form_error('berat') ?></label>
+                                                <input type="number" class="form-control" name="berat" id="berat"
+                                                    placeholder="Berat" value="<?php echo $berat; ?>" />
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="varchar">Stok
                                                     <?php echo form_error('stok') ?></label>
                                                 <input type="number" class="form-control" name="stok" id="stok"
@@ -83,11 +63,18 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="varchar">Harga Jeruk
+                                                <label for="varchar">Harga Jual
                                                     <?php echo form_error('harga_jual') ?></label>
                                                 <input type="number" class="form-control" name="harga_jual"
-                                                    id="harga_jual" placeholder="Harga Jeruk"
+                                                    id="harga_jual" placeholder="Harga Jual Jeruk"
                                                     value="<?php echo $harga_jual; ?>" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="varchar">Harga Beli
+                                                    <?php echo form_error('harga_beli') ?></label>
+                                                <input type="number" class="form-control" name="harga_beli"
+                                                    id="harga_beli" placeholder="Harga Beli Jeruk"
+                                                    value="<?php echo $harga_beli; ?>" />
                                             </div>
 
                                             <div class="form-group">

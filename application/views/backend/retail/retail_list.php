@@ -32,10 +32,9 @@
                                     <th>Nama Retail</th>
                                     <th>Telepon</th>
                                     <th>Stok</th>
+                                    <th>Limit Stok</th>
                                     <th>Harga Jual</th>
                                     <th>Harga Beli</th>
-                                    <th>Kecamatan</th>
-                                    <th>Kelurahan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -50,10 +49,9 @@
                                     <td><?php echo $retail->nama_retail ?></td>
                                     <td><?php echo $retail->no_hp ?></td>
                                     <td><?php echo $retail->stok ?></td>
+                                    <td><?php echo $retail->limitstok ?></td>
                                     <td><?php echo $retail->harga_jual ?></td>
                                     <td><?php echo $retail->harga_beli ?></td>
-                                    <td><?php echo $retail->kecamatan_nama ?></td>
-                                    <td><?php echo $retail->kelurahan_nama ?></td>
                                     <td style="text-align:center" width="200px">
                                         <?php
                                                 echo anchor(site_url('retail/update/'.$retail->id_retail),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); 
