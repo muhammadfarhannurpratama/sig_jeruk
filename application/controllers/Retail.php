@@ -45,6 +45,8 @@ class Retail extends CI_Controller {
         $this->data['berat']     = set_value('berat');
         $this->data['harga_beli']     = set_value('harga_beli');
         $this->data['harga_jual']      = set_value('harga_jual');
+        $this->data['user_id']     = set_value('user_id');
+        $this->data['data_user']   = $this->user->get_all_user_retail();
 
        
         $this->data['latitude']     = set_value('latitude');
@@ -75,6 +77,8 @@ class Retail extends CI_Controller {
             $this->data['harga_beli']     = set_value('harga_beli', $row->harga_beli);
             $this->data['latitude']     = set_value('latitude', $row->latitude);
             $this->data['longitude']     = set_value('longitude', $row->longitude);
+            $this->data['user_id']     = set_value('user_id');
+            $this->data['data_user']   = $this->user->get_all_user_retail();
             $this->data['jeruk_data']   = $this->jeruk->get_all_jeruk();
 
             $this->data['main_view']	= "backend/retail/retail_form";
@@ -142,6 +146,7 @@ class Retail extends CI_Controller {
                 'harga_beli' => $this->input->post('harga_beli',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
+                'user_id' => $this->input->post('user_id',TRUE),
                 'foto_retail' => $foto,
             );
 
@@ -192,6 +197,7 @@ class Retail extends CI_Controller {
                 'harga_beli' => $this->input->post('harga_beli',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
+                'user_id' => $this->input->post('user_id',TRUE),
                 'foto_retail' => $foto,
             );
 
@@ -219,6 +225,7 @@ class Retail extends CI_Controller {
        
         $this->form_validation->set_rules('longitude', ' ', 'trim|required');
         $this->form_validation->set_rules('latitude', ' ', 'trim|required');
+        $this->form_validation->set_rules('user_id', ' ', 'trim|required');
 
         $this->form_validation->set_rules('id_retail', 'id_retail', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

@@ -29,10 +29,8 @@ class Lahan extends CI_Controller {
 
     }
 
-
     public function create(){
 
-       
         $this->data['title'] = 'Tambah Data Lahan';
         $this->data['button']       = 'Tambah Data';
         $this->data['action']       = site_url('lahan/create_action');
@@ -45,12 +43,13 @@ class Lahan extends CI_Controller {
         $this->data['luas_lahan']     = set_value('luas_lahan');
         $this->data['jumlah_panen']     = set_value('jumlah_panen');
         $this->data['harga_jeruk']      = set_value('harga_jeruk');
-
-       
+        $this->data['tanggal_panen']      = set_value('tanggal_panen');
         $this->data['latitude']     = set_value('latitude');
         $this->data['longitude']     = set_value('longitude');
         $this->data['kecamatan_id']     = set_value('kecamatan_id');
         $this->data['kelurahan_id']     = set_value('kelurahan_id');
+        $this->data['user_id']     = set_value('user_id');
+        $this->data['data_user']   = $this->user->get_all_user_petani();
 
         $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
         $this->data['jeruk_data']   = $this->jeruk->get_all_jeruk();
@@ -77,11 +76,14 @@ class Lahan extends CI_Controller {
             $this->data['luas_lahan']     = set_value('luas_lahan', $row->luas_lahan);
             $this->data['jumlah_panen']     = set_value('jumlah_panen', $row->jumlah_panen);
             $this->data['harga_jeruk']     = set_value('harga_jeruk', $row->harga_jeruk);
+            $this->data['tanggal_panen']     = set_value('tanggal_panen', $row->tanggal_panen);
            
             $this->data['latitude']     = set_value('latitude', $row->latitude);
             $this->data['longitude']     = set_value('longitude', $row->longitude);
             $this->data['kecamatan_id']     = set_value('kecamatan_id', $row->kecamatan_id);
             $this->data['kelurahan_id']     = set_value('kelurahan_id', $row->kelurahan_id);
+            $this->data['user_id']     = set_value('user_id');
+            $this->data['data_user']   = $this->user->get_all_user_petani();
 
 
             $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
@@ -148,16 +150,15 @@ class Lahan extends CI_Controller {
                 'lokasi_lahan' => $this->input->post('lokasi_lahan',TRUE),
                 'no_hp' => $this->input->post('no_hp',TRUE),
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
-               
                 'luas_lahan' => $this->input->post('luas_lahan',TRUE),
                 'jumlah_panen' => $this->input->post('jumlah_panen',TRUE),
                 'harga_jeruk' => $this->input->post('harga_jeruk',TRUE),
-               
-               
+                'tanggal_panen' => $this->input->post('tanggal_panen',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
                 'kecamatan_id' => $this->input->post('kecamatan_id',TRUE),
                 'kelurahan_id' => $this->input->post('kelurahan_id',TRUE),
+                'user_id' => $this->input->post('user_id',TRUE),
                 'foto_lahan' => $foto,
             );
 
@@ -208,6 +209,7 @@ class Lahan extends CI_Controller {
                 'longitude' => $this->input->post('longitude',TRUE),
                 'kecamatan_id' => $this->input->post('kecamatan_id',TRUE),
                 'kelurahan_id' => $this->input->post('kelurahan_id',TRUE),
+                'user_id' => $this->input->post('user_id',TRUE),
                 'foto_lahan' => $foto,
             );
 
@@ -226,6 +228,7 @@ class Lahan extends CI_Controller {
         $this->form_validation->set_rules('lokasi_lahan', ' ', 'trim|required');
         $this->form_validation->set_rules('no_hp', ' ', 'trim');
         $this->form_validation->set_rules('id_jeruk', ' ', 'trim');
+        $this->form_validation->set_rules('tanggal_panen', ' ', 'trim');
 
         $this->form_validation->set_rules('luas_lahan', ' ', 'trim|required');
         $this->form_validation->set_rules('jumlah_panen', ' ', 'trim|required');
@@ -234,6 +237,7 @@ class Lahan extends CI_Controller {
         $this->form_validation->set_rules('longitude', ' ', 'trim|required');
         $this->form_validation->set_rules('kecamatan_id', ' ', 'trim|required');
         $this->form_validation->set_rules('kelurahan_id', ' ', 'trim|required');
+        $this->form_validation->set_rules('user_id', ' ', 'trim|required');
 
         $this->form_validation->set_rules('id_lahan', 'id_lahan', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

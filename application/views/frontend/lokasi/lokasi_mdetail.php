@@ -49,6 +49,10 @@
                             <td><?php echo $lahan->jeruk_nama; ?></td>
                         </tr>
                         <tr>
+                            <th width="20%">Tanggal Panen</th>
+                            <td><?php echo $lahan->tanggal_panen; ?></td>
+                        </tr>
+                        <tr>
                             <th width="20%">Koordinat Lahan</th>
                             <td><?php echo $lahan->latitude; ?><?php echo $lahan->longitude; ?></td>
                         </tr>

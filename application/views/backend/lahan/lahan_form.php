@@ -56,6 +56,20 @@
                         <input input type="file" name="foto" class="form-control" id="foto"
                             aria-describedby="input-foto" accept="image/*">
                     </div>
+
+                    <div class="form-group">
+                        <label for="varchar">Pilih User
+                            <?php echo form_error('user_id') ?></label>
+                        <select name="user_id" id="user_id" class="form-control">
+                            <?php
+                                foreach ($data_user as $user){ ?>
+                            <option value="<?php echo $user->user_id; ?>">
+                                <?php echo $user->user_id.' '.$user->user_namalengkap; ?></option>
+                            <?php
+                                            }
+                                            ?>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="col-sm-6">
@@ -78,6 +92,13 @@
                             <?php echo form_error('harga_jeruk') ?></label>
                         <input type="number" class="form-control" name="harga_jeruk" id="harga_jeruk"
                             placeholder="Harga Jeruk" value="<?php echo $harga_jeruk; ?>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="varchar">Tanggal Panen
+                            <?php echo form_error('tanggal_panen') ?></label>
+                        <input type="date" class="form-control" name="tanggal_panen" id="tanggal_panen"
+                            placeholder="Tanggal Panen" value="<?php echo $tanggal_panen; ?>" />
                     </div>
 
                     <div class="form-group">

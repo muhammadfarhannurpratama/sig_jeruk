@@ -44,6 +44,20 @@
                         <input type="number" class="form-control" name="stok" id="stok" placeholder="Stok"
                             value="<?php echo $stok; ?>" />
                     </div>
+
+                    <div class="form-group">
+                        <label for="varchar">Pilih User
+                            <?php echo form_error('user_id') ?></label>
+                        <select name="user_id" id="user_id" class="form-control">
+                            <?php
+            foreach ($data_user as $user){ ?>
+                            <option value="<?php echo $user->user_id; ?>">
+                                <?php echo $user->user_id.' '.$user->user_namalengkap; ?></option>
+                            <?php
+                        }
+                        ?>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="col-sm-6">

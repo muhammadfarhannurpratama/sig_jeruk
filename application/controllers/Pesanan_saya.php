@@ -109,10 +109,16 @@ class Pesanan_saya extends CI_Controller
             'status_order' =>'3'
         );
         $this->transaksipengguna->update_order($data);
+        
+        $sql = $this->db->query("SELECT * FROM transaksi_pengguna a 
+        JOIN detail_transaksipengguna b ON a.kode_transaksipengguna=b.kode_transaksipengguna 
+        where b.kode_transaksipengguna='$kode_transaksipengguna'");
+        foreach ($sql->result() as $d) {
+            $sql2 = $this->db->query("UPDATE tb_retail SET stok=stok-'$d->qty' WHERE id_retail='$d->id_retail'");
+        }
+        
         $this->session->set_flashdata('pesan', 'Pesanan Telah Diterima');
         redirect('pesanan_saya');
     }
-
-
 }
     

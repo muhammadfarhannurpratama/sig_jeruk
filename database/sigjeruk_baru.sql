@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2022 at 05:50 AM
+-- Generation Time: May 28, 2022 at 11:46 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -40,7 +40,9 @@ CREATE TABLE `detail_transaksipengguna` (
 --
 
 INSERT INTO `detail_transaksipengguna` (`kode_detailtransaksi`, `kode_transaksipengguna`, `id_retail`, `harga`, `qty`) VALUES
-(4, '20220521QMNKD3HD', '2', '2000', 2);
+(4, '20220521QMNKD3HD', '2', '2000', 2),
+(5, '20220523JFKAP043', '2', '2000', 10),
+(6, '202205286TARYLSC', '2', '2000', 20);
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,9 @@ CREATE TABLE `keranjang_retail` (
 
 INSERT INTO `keranjang_retail` (`kode_keranjangretail`, `id_lahan`, `harga`, `qty`, `subtotal`) VALUES
 ('1705221652782458', '25', '5000', 10, '50000'),
-('2205221653188934', '25', '5000', 2, '5000');
+('2205221653188934', '25', '5000', 2, '5000'),
+('2305221653274812', '25', '5000', 5, '5000'),
+('2805221653726736', '25', '5000', 2, '5000');
 
 -- --------------------------------------------------------
 
@@ -175,18 +179,19 @@ CREATE TABLE `tb_lahan` (
   `longitude` varchar(50) DEFAULT NULL,
   `kecamatan_id` int(11) DEFAULT NULL,
   `kelurahan_id` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `tanggal_panen` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_lahan`
 --
 
-INSERT INTO `tb_lahan` (`id_lahan`, `nama_pemilik`, `lokasi_lahan`, `no_hp`, `foto_lahan`, `id_jeruk`, `luas_lahan`, `jumlah_panen`, `harga_jeruk`, `latitude`, `longitude`, `kecamatan_id`, `kelurahan_id`, `user_id`) VALUES
-(24, 'puput', 'babatan', '098765432167', '1646880981.png', 8, '1000', '2000', '5000', '-8.192146', '113.440612', 28, 27, 0),
-(25, 'sukiman', 'jl. pucukan', '098123786546', '1647096092.PNG', 14, '500', '1180', '5000', '-8.168097', '113.435187', 28, 28, 3),
-(26, 'supardi', 'Jl.Baidi', '086123876909', '1647482034.png', 7, '700', '1600', '5000', '-8.170055', '113.423934', 28, 29, 0),
-(27, 'mannan', 'Jl.Test', '098765765413', '1647503462.png', 7, '380', '960', '5000', '-8.211969', '113.456314', 28, 27, 0);
+INSERT INTO `tb_lahan` (`id_lahan`, `nama_pemilik`, `lokasi_lahan`, `no_hp`, `foto_lahan`, `id_jeruk`, `luas_lahan`, `jumlah_panen`, `harga_jeruk`, `latitude`, `longitude`, `kecamatan_id`, `kelurahan_id`, `user_id`, `tanggal_panen`) VALUES
+(24, 'puput', 'babatan', '098765432167', '1646880981.png', 8, '1000', '2000', '5000', '-8.192146', '113.440612', 28, 27, 0, '2022-05-01'),
+(25, 'sukiman', 'jl. pucukan', '098123786546', '1647096092.PNG', 14, '500', '1180', '5000', '-8.168097', '113.435187', 28, 28, 3, '2022-05-01'),
+(26, 'supardi', 'Jl.Baidi', '086123876909', '1647482034.png', 7, '700', '1600', '5000', '-8.170055', '113.423934', 28, 29, 0, '0000-00-00'),
+(27, 'mannan', 'Jl.Test', '098765765413', '1647503462.png', 7, '380', '960', '5000', '-8.211969', '113.456314', 28, 27, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -228,8 +233,6 @@ CREATE TABLE `tb_retail` (
   `harga_beli` varchar(55) DEFAULT NULL,
   `latitude` varchar(255) NOT NULL,
   `longitude` varchar(255) NOT NULL,
-  `kecamatan_id` int(11) NOT NULL,
-  `kelurahan_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -237,8 +240,8 @@ CREATE TABLE `tb_retail` (
 -- Dumping data for table `tb_retail`
 --
 
-INSERT INTO `tb_retail` (`id_retail`, `nama_retail`, `lokasi_retail`, `no_hp`, `foto_retail`, `id_jeruk`, `stok`, `berat`, `limitstok`, `harga_jual`, `harga_beli`, `latitude`, `longitude`, `kecamatan_id`, `kelurahan_id`, `user_id`) VALUES
-(2, 'retail 1', 'semboro lor', '082226151251', '1650442937.png', 7, 220, 1, 100, '2000', '1000', '-8.194334', '113.448250', 28, 28, 2);
+INSERT INTO `tb_retail` (`id_retail`, `nama_retail`, `lokasi_retail`, `no_hp`, `foto_retail`, `id_jeruk`, `stok`, `berat`, `limitstok`, `harga_jual`, `harga_beli`, `latitude`, `longitude`, `user_id`) VALUES
+(2, 'retail 1', 'semboro lor', '082226151251', '1650442937.png', 7, 200, 1, 100, '2000', '1000', '-8.194334', '113.448250', 2);
 
 -- --------------------------------------------------------
 
@@ -284,7 +287,7 @@ INSERT INTO `tb_user` (`user_id`, `user_username`, `user_pass`, `user_namalengka
 (1, 'admin', '$2y$10$lGCLUHMRpNQLXc6F2riOROOIKyLX82qXXZWBvedDHbs6yF5EVKyOu', 'Muh Farhan', '1619160423.png', 'Administrator'),
 (2, 'aji', '$2y$10$lGCLUHMRpNQLXc6F2riOROOIKyLX82qXXZWBvedDHbs6yF5EVKyOu', 'Septiaji', '1650963391.png', 'Retail'),
 (3, 'dianarof', '$2y$10$lGCLUHMRpNQLXc6F2riOROOIKyLX82qXXZWBvedDHbs6yF5EVKyOu', 'diana rofiah hayati', '1653188140.jpg', 'Petani'),
-(34, 'deni', '$2y$10$ClTVF5ir/Y7TXYNPwKWs5.YyXVetw2ApO7iZmtMFi8F.GqJuyksu.', 'deni', '1650963391.png', 'Pengguna');
+(34, 'deni', '$2y$10$ClTVF5ir/Y7TXYNPwKWs5.YyXVetw2ApO7iZmtMFi8F.GqJuyksu.', 'deni', '1653713000', 'Pengguna');
 
 -- --------------------------------------------------------
 
@@ -324,7 +327,9 @@ CREATE TABLE `transaksi_pengguna` (
 --
 
 INSERT INTO `transaksi_pengguna` (`kode_transaksipengguna`, `user_id`, `tgl_transaksi`, `batas_bayar`, `nama_pelanggan`, `no_telepon`, `provinsi`, `kota`, `alamat`, `kode_pos`, `expedisi`, `paket`, `estimasi`, `ongkir`, `berat`, `grand_total`, `total_bayar`, `status_bayar`, `bukti_bayar`, `atas_nama`, `no_rek`, `nama_bank`, `status_order`, `no_resi`) VALUES
-('20220521QMNKD3HD', 34, '2022-05-21 14:12:13', '2022-05-22 14:12:13', 'deni', '082244338251', 'Jawa Timur', 'Bondowoso', 'Jember', '68156', 'jne', 'OKE', '2-3', 5000, 2, 4000, 9000, 1, 'bukti_1605221652667613.jpeg', 'deni', '351513531412', 'bri', 3, '123');
+('20220521QMNKD3HD', 34, '2022-05-21 14:12:13', '2022-05-22 14:12:13', 'deni', '082244338251', 'Jawa Timur', 'Bondowoso', 'Jember', '68156', 'jne', 'OKE', '2-3', 5000, 2, 4000, 9000, 1, 'bukti_1605221652667613.jpeg', 'deni', '351513531412', 'bri', 3, '123'),
+('20220523JFKAP043', 34, '2022-05-23 05:26:48', '2022-05-24 05:26:48', 'deni', '082244338251', 'Jawa Tengah', 'Boyolali', 'Jember', '68156', 'pos', 'Paket Kilat Khusus', '2 HARI', 14000, 10, 20000, 34000, 1, '202205236Q5BDWWJ', 'deni', '351513531412', 'BRI', 3, '41224'),
+('202205286TARYLSC', 34, '2022-05-28 11:41:20', '2022-05-29 11:41:20', 'deni', '082244338251', 'Bangka Belitung', 'Bangka', 'Jember', '68156', 'jne', 'OKE', '3-6', 45000, 20, 40000, 85000, 1, '20220528LW9S0N1P', 'deni', '351513531412', 'BRI', 3, '12312213');
 
 -- --------------------------------------------------------
 
@@ -338,7 +343,6 @@ CREATE TABLE `transaksi_retail` (
   `tanggal_beli` date NOT NULL,
   `nama_retail` varchar(110) NOT NULL,
   `alamat_pengiriman` varchar(255) NOT NULL,
-  `jumlah_bayar` varchar(100) NOT NULL,
   `bukti_pembayaran` varchar(100) NOT NULL,
   `status_pesanan` varchar(11) NOT NULL DEFAULT 't',
   `id_retail` int(11) NOT NULL
@@ -348,9 +352,11 @@ CREATE TABLE `transaksi_retail` (
 -- Dumping data for table `transaksi_retail`
 --
 
-INSERT INTO `transaksi_retail` (`kode_transaksiretail`, `kode_keranjangretail`, `tanggal_beli`, `nama_retail`, `alamat_pengiriman`, `jumlah_bayar`, `bukti_pembayaran`, `status_pesanan`, `id_retail`) VALUES
-('1705221652782458', '1705221652782458', '2022-05-17', 'retail', 'semboro', '50000', 'bukti_1605221652667613.jpeg', 'y', 2),
-('2205221653188934', '2205221653188934', '2022-05-22', 'retail', 'dasdasf', '10000', '20220522DABYMLWX.jpg', 't', 2);
+INSERT INTO `transaksi_retail` (`kode_transaksiretail`, `kode_keranjangretail`, `tanggal_beli`, `nama_retail`, `alamat_pengiriman`, `bukti_pembayaran`, `status_pesanan`, `id_retail`) VALUES
+('1705221652782458', '1705221652782458', '2022-05-17', 'retail', 'semboro', 'bukti_1605221652667613.jpeg', 'y', 2),
+('2205221653188934', '2205221653188934', '2022-05-22', 'retail', 'dasdasf', '20220522DABYMLWX.jpg', 't', 2),
+('2305221653274812', '2305221653274812', '2022-05-23', 'retail', 'adad', '20220523DJQ1NBFG.jpg', 't', 2),
+('2805221653726736', '2805221653726736', '2022-05-28', 'retail', 'ada', '20220528A2AIEEWM.png', 't', 2);
 
 --
 -- Indexes for dumped tables
@@ -446,7 +452,7 @@ ALTER TABLE `transaksi_retail`
 -- AUTO_INCREMENT for table `detail_transaksipengguna`
 --
 ALTER TABLE `detail_transaksipengguna`
-  MODIFY `kode_detailtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kode_detailtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_identitas`
@@ -458,25 +464,25 @@ ALTER TABLE `tb_identitas`
 -- AUTO_INCREMENT for table `tb_jeruk`
 --
 ALTER TABLE `tb_jeruk`
-  MODIFY `id_jeruk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_jeruk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_kecamatan`
 --
 ALTER TABLE `tb_kecamatan`
-  MODIFY `kecamatan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `kecamatan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tb_kelurahan`
 --
 ALTER TABLE `tb_kelurahan`
-  MODIFY `kelurahan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `kelurahan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tb_lahan`
 --
 ALTER TABLE `tb_lahan`
-  MODIFY `id_lahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_lahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tb_rekening`
@@ -488,13 +494,13 @@ ALTER TABLE `tb_rekening`
 -- AUTO_INCREMENT for table `tb_retail`
 --
 ALTER TABLE `tb_retail`
-  MODIFY `id_retail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_retail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables

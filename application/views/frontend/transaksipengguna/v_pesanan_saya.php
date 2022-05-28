@@ -80,9 +80,9 @@
 
                         </table>
                         <hr>
-                        <span class="border border-secondary text-bold">Lakukan pembayaran maksimal 1x24 jam Setelah
+                        <!-- <span class="border border-secondary text-bold">Lakukan pembayaran maksimal 1x24 jam Setelah
                             Proses Pemesanan, Jika Melebihi Batas Waktu Pembayaran Maka Transaksi Otomatis Akan
-                            DiHapus</span>
+                            DiHapus</span> -->
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel"
                         aria-labelledby="custom-tabs-four-profile-tab">

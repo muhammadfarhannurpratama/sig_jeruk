@@ -10,11 +10,24 @@ class M_User extends CI_Model
 
     public $table_user = 'tb_user';
     public $id_user = 'user_id';
+    public $user_status = 'user_status';
     public $order_user = 'ASC';
 
     function get_all_user()
     {
         $this->db->order_by($this->id_user, $this->order_user);
+        return $this->db->get($this->table_user)->result();
+    }
+    function get_all_user_petani()
+    {
+        $this->db->order_by($this->id_user, $this->order_user);
+        $this->db->where($this->user_status, 'Petani');
+        return $this->db->get($this->table_user)->result();
+    }
+    function get_all_user_retail()
+    {
+        $this->db->order_by($this->id_user, $this->order_user);
+        $this->db->where($this->user_status, 'Retail');
         return $this->db->get($this->table_user)->result();
     }
     function get_by_id_user($id)

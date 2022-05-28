@@ -45,8 +45,6 @@
                          class="nav-link <?php if($this->uri->segment(2)== 'pesanan_masuk' AND $this->uri->segment(1) == 'TransaksiPengguna' ){echo "active";} ?>">
                          <i class="nav-icon fas fa-shopping-bag"></i>
                          <p> Pesanan Masuk </p>
-                         <i class="fas fa-angle-left right"></i>
-                         <span class="badge badge-info right">6</span>
                      </a>
                  </li>
                  <?php endif ?>
