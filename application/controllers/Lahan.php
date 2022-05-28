@@ -90,7 +90,9 @@ class Lahan extends CI_Controller {
 
             $this->data['main_view']	= "backend/lahan/lahan_form";
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Record Not Found</h6>
+        </div>');
             redirect(site_url('lahan'));
         }
         $this->load->view('backend/public', $this->data);
@@ -101,10 +103,14 @@ class Lahan extends CI_Controller {
 
         if ($row) {
             $this->lahan->delete_lahan($id);
-            $this->session->set_flashdata('message', 'Hapus data berhasil.');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Hapus Data Berhasil</h6>
+        </div>');
             redirect(site_url('lahan'));
         } else {
-            $this->session->set_flashdata('message', 'Data tidak ditemukan.');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Data Tidak Ditemukan</h6>
+        </div>');
             redirect(site_url('lahan'));
         }
         $this->load->view('backend/public', $this->data);
@@ -156,7 +162,9 @@ class Lahan extends CI_Controller {
             );
 
             $this->lahan->insert_lahan($data);
-            $this->session->set_flashdata('message', 'Tambah Data Berhasil');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            <h6> <i class="icon fas fa-check"></i>Tambah Data Berhasil</h6>
+            </div>');
             redirect(site_url('lahan'));
         }
         $this->load->view('backend/public', $this->data);
@@ -204,7 +212,9 @@ class Lahan extends CI_Controller {
             );
 
             $this->lahan->update_lahan($this->input->post('id_lahan', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Data Berhasil');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            <h6> <i class="icon fas fa-check"></i>Edit Data Berhasil</h6>
+            </div>');
             redirect(site_url('lahan'));
         }
         $this->load->view('backend/public', $this->data);

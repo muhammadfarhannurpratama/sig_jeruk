@@ -33,7 +33,7 @@ class Dashboard extends CI_Controller {
         $this->data['lahan_data']   = $lahan;
         $this->data['total_lahan']   = $lahan1;
         $this->data['total_jeruk']   = $jeruk;
-        $this->data['title']            = 'Dashboard Admin';
+        $this->data['title']            = 'Dashboard';
 
         $this->data['main_view']	= "backend/user/dashboard";
         $this->load->view('backend/public', $this->data);

@@ -10,30 +10,39 @@
 
     <title>SIGJERUK | <?php echo $title ?> </title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?= base_url()?>template/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url()?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?= base_url()?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="<?= base_url() ?>template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?= base_url()?>template/dist/css/adminlte.min.css">
 
-    <link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('template/plugins/styles.css'); ?>" />
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link href="<?php echo base_url()?>assets/fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/css/animate.min.css" rel="stylesheet">
 
-    <!-- Custom styling plus plugins -->
-    <link href="<?php echo base_url()?>assets/css/custom_admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/maps/jquery-jvectormap-2.0.1.css" />
-
-    <link rel="stylesheet" href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css') ?>" />
-    <link href="<?php echo base_url()?>assets/css/icheck/flat/green.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/css/floatexamples.css" rel="stylesheet" />
-    <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-    <link href="<?php echo base_url() ?>assets/public/css/styles_map.css" rel="stylesheet" />
-    <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
 </head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+
+        </nav>
+        <!-- /.navbar -->

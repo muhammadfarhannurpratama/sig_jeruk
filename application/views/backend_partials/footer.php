@@ -1,39 +1,60 @@
-               <!-- footer content -->
-                <footer>
-                    <div class="">
-                        <p class="pull-right"><span class="lead"> SIG JERUK |</span> 
-                            Sistem Informasi Geografis
-                        </p>
-                    </div>
-                    <div class="clearfix"></div>
-                </footer>
-                <!-- /footer content -->
+ </div>
+ <!-- /.row -->
+ </div><!-- /.container-fluid -->
+ </div>
+ <!-- /.content -->
+ </div>
+ <!-- /.content-wrapper -->
 
-            </div>
-            <!-- /page content -->
-        </div>
+ <!-- Main Footer -->
+ <footer class="main-footer">
+     <!-- To the right -->
+     <!-- Default to the left -->
+     <strong>Copyright &copy; 2022 <a href="#">SIG JERUK</a>.</strong> Sistem Informasi Geografis.
+ </footer>
+ </div>
+ <!-- ./wrapper -->
 
 
-    </div>
+ <!-- REQUIRED SCRIPTS -->
+ <!-- jQuery -->
+ <script src="<?= base_url()?>template/plugins/jquery/jquery.min.js"></script>
+ <!-- Bootstrap 4 -->
+ <script src="<?= base_url()?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <!-- DataTables -->
+ <script src="<?= base_url()?>template/plugins/datatables/jquery.dataTables.min.js"></script>
+ <script src="<?= base_url()?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+ <script src="<?= base_url()?>template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+ <script src="<?= base_url()?>template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+ <!-- AdminLTE App -->
+ <script src="<?= base_url()?>template/dist/js/adminlte.min.js"></script>
+ <!-- AdminLTE for demo purposes -->
+ <script src="<?= base_url()?>template/dist/js/demo.js"></script>
+ <script>
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+    });
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+});
+ </script>
+ <!-- script agar alert otomatis hilang dengan sendirinya -->
+ <script>
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+    });
+}, 3000)
+ </script>
+ </body>
 
-    <div id="custom_notifications" class="custom-notifications dsp_none">
-        <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-        </ul>
-        <div class="clearfix"></div>
-        <div id="notif-group" class="tabbed_notifications"></div>
-    </div>
-
-    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/nicescroll/jquery.nicescroll.min.js"></script>
-
-    <!-- bootstrap progress js -->
-    <script src="<?php echo base_url() ?>assets/js/progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- icheck -->
-    <script src="<?php echo base_url() ?>assets/js/icheck/icheck.min.js"></script>
-    <!-- sparkline -->
-    <script src="<?php echo base_url() ?>assets/js/sparkline/jquery.sparkline.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/js/custom_admin.js"></script>
-</body>
-
-</html>
+ </html>

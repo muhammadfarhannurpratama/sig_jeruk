@@ -54,7 +54,9 @@ class Kecamatan extends CI_Controller {
 
             $this->data['main_view']	= "backend/kecamatan/kecamatan_form";
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Record Not Found</h6>
+        </div>');
             redirect(site_url('kecamatan'));
         }
         $this->load->view('backend/public', $this->data);
@@ -65,10 +67,14 @@ class Kecamatan extends CI_Controller {
 
         if ($row) {
             $this->kecamatan->delete_kecamatan($id);
-            $this->session->set_flashdata('message', 'Hapus data berhasil.');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Hapus Data Berhasil</h6>
+        </div>');
             redirect(site_url('kecamatan'));
         } else {
-            $this->session->set_flashdata('message', 'Data tidak ditemukan.');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Data Tidak Ditemukan</h6>
+        </div>');
             redirect(site_url('kecamatan'));
         }
         $this->load->view('backend/public', $this->data);
@@ -85,7 +91,9 @@ class Kecamatan extends CI_Controller {
             );
 
             $this->kecamatan->insert_kecamatan($data);
-            $this->session->set_flashdata('message', 'Tambah Data Berhasil');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Tambah Data Berhasil</h6>
+        </div>');
             redirect(site_url('kecamatan'));
         }
         $this->load->view('backend/public', $this->data);
@@ -102,7 +110,9 @@ class Kecamatan extends CI_Controller {
             );
 
             $this->kecamatan->update_kecamatan($this->input->post('kecamatan_id', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Data Berhasil');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Edit Data Berhasil</h6>
+        </div>');
             redirect(site_url('kecamatan'));
         }
         $this->load->view('backend/public', $this->data);

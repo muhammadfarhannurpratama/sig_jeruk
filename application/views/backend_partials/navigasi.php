@@ -1,150 +1,248 @@
-<body class="nav-md">
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+     <!-- Brand Logo -->
+     <a href="<?= base_url('Dashboard')?>" class="brand-link">
+         <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">-->
 
-    <div class="container body">
+         <span class="brand-text font-weight-bold my-2">SIG Jeruk</span>
+     </a>
+     <?php 
+    $this->db->where('user_id',$this->session->user_id);
+    $img=$this->db->get('tb_user')->row();
+    ?>
 
-        <div class="main_container">
+     <!-- Sidebar -->
+     <div class="sidebar">
+         <!-- Sidebar user panel (optional) -->
+         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+             <div class="image">
+                 <img src="<?php echo base_url('assets/img/fotouser/'.$img->foto_user);?>"
+                     class="img-circle elevation-2" alt="User Image" width="50px">
+             </div>
+             <div class="info">
+                 <a href="#" class="d-block"> Welcome <?php echo $this->session->userdata('user_namalengkap')?></a>
+             </div>
+         </div>
 
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
+         <!-- Sidebar Menu -->
+         <nav class="mt-2">
+             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                 data-accordion="false">
+                 <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                 <li class="nav-item">
+                     <a href="<?= base_url('Dashboard') ?>"
+                         class="nav-link <?php if($this->uri->segment(1)=='Dashboard' AND $this->uri->segment(2)=="" ){echo "active";} ?>">
+                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <p> Dashboard </p>
+                     </a>
+                 </li>
 
-                    <div class="navbar nav_title" style="border: 0;">
-                        <center><a href="#" class="site_title"><span>SIG Jeruk</span></a></center>
-                    </div>
-                    <div class="clearfix"></div>
-                    <?php 
-                    $this->db->where('user_id',$this->session->user_id);
-                    $img=$this->db->get('tb_user')->row();
-                    ?>
+                 <?php if ($this->session->userdata('user_status')=='Retail'): ?>
+                 <li class="nav-item">
+                     <a href="<?= base_url('TransaksiPengguna/pesanan_masuk')?>"
+                         class="nav-link <?php if($this->uri->segment(2)== 'pesanan_masuk' AND $this->uri->segment(1) == 'TransaksiPengguna' ){echo "active";} ?>">
+                         <i class="nav-icon fas fa-shopping-bag"></i>
+                         <p> Pesanan Masuk </p>
+                         <i class="fas fa-angle-left right"></i>
+                         <span class="badge badge-info right">6</span>
+                     </a>
+                 </li>
+                 <?php endif ?>
 
-                    <!-- menu prile quick info -->
-                    <div class="profile">
-                        <div class="profile_pic">
-                            <img src="<?php echo base_url('assets/img/fotouser/'.$img->foto_user);?>" alt="..."
-                                class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Selamat Datang,</span>
-                            <h2>
-                                <?php echo $this->session->userdata('user_namalengkap');?>
-                                </a></h2>
-                        </div>
-                    </div>
-                    <!-- /menu prile quick info -->
 
-                    <br />
 
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                 <?php if ($this->session->userdata('user_status')=='Petani' ): ?>
+                 <!--nav Riwayat Transaksi-->
+                 <li class="nav-item">
+                     <a href="<?= base_url('RiwayatPembelianRetail/list_pesanan_retail')?>"
+                         class="nav-link <?php if($this->uri->segment(1)=='RiwayatPembelianRetail' OR $this->uri->segment(2)=='list_pesanan_retail'){echo "active";} ?>">
+                         <i class="nav-icon fas fa-shopping-cart"></i>
+                         <p>Riwayat Transaksi</p>
+                     </a>
+                 </li>
+                 <?php endif ?>
 
-                        <div class="menu_section">
-                            <br><br><br><br>
-                            <ul class="nav side-menu">
-                                <li>
-                                    <a href="<?php echo base_url('Dashboard')  ?>">
-                                        <i class="fa fa-tachometer"></i>Dashboard</a>
-                                </li>
-                                <?php if ($this->session->userdata('user_status')=='Retail'): ?>
-                                <li>
-                                    <a href="<?php echo base_url('TransaksiPengguna/pesanan_masuk')  ?>">
-                                        <i class="fa fa-shopping-cart"></i>Pesanan Masuk</a>
-                                </li>
-                                <?php endif ?>
-                                <li>
-                                    <a>
-                                        <i class="fa fa-users"></i> Akun <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu" style="display: none">
-                                        <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
-                                        <li><a href="<?php echo base_url('User')  ?>">Daftar User</a>
-                                        </li>
-                                        <?php endif ?>
-                                        <li><a href="<?php echo base_url('Ganti')  ?>">Ubah Kata Sandi</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url('Gantifoto')  ?>">Ganti Foto</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
-                                <li><a><i class="fa fa-map-marker"></i> Wilayah <span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?php echo base_url('Kecamatan')  ?>">Kecamatan</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url('Kelurahan')  ?>">Kelurahan / Desa</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-tags"></i> Kelola Data <span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?php echo base_url('Jeruk')  ?>">Data Jeruk</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url('Lahan')  ?>">Data Lahan</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url('Retail')  ?>">Data Retail</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <?php endif ?>
+                 <?php if ($this->session->userdata('user_status')=='Retail' ): ?>
+                 <!--nav RiwayatPembelianRetail-->
+                 <li class="nav-item">
+                     <a href="<?= base_url('RiwayatPembelianRetail')?>"
+                         class="nav-link <?php if($this->uri->segment(1)=='RiwayatPembelianRetail' ){echo "active";} ?>">
+                         <i class="nav-icon fas fa-cart-plus"></i>
+                         <p>Riwayat Pembelian</p>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('RiwayatPembelianPengguna')?>"
+                         class="nav-link <?php if($this->uri->segment(1)=='RiwayatPembelianPengguna' ){echo "active";} ?>">
+                         <i class="nav-icon fas fa-calendar"></i>
+                         <p>Riwayat Penjualan</p>
+                     </a>
+                 </li>
+                 <?php endif ?>
 
-                                <!-- RiwayatTransaksi admin dan petani -->
-                                <?php if ($this->session->userdata('user_status')=='Petani' ): ?>
-                                <li>
-                                    <a href="<?php echo base_url('RiwayatPembelianRetail/list_pesanan_retail')  ?>">
-                                        <i class="fa fa-shopping-cart"></i>Riwayat Transaksi</a>
-                                </li>
-                                <?php endif ?>
+                 <!-- end nav RiwayatPembelianRetail-->
 
-                                <!-- RiwayatTransaksi retail -->
-                                <?php if ($this->session->userdata('user_status')=='Retail'): ?>
-                                <li>
-                                    <a href="<?php echo base_url('RiwayatPembelianRetail')  ?>">
-                                        <i class="fa fa-tags" aria-hidden="true"></i>Riwayat Pembelian</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('RiwayatPembelianPengguna')  ?>">
-                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>Riwayat Penjualan</a>
-                                </li>
-                                <?php endif ?>
-                            </ul>
-                        </div>
+                 <!--nav sub bab user-->
+                 <li class="nav-item has-treeview">
+                     <a href=""
+                         class="nav-link <?php if($this->uri->segment(1)=='User' OR $this->uri->segment(1) == 'Ganti' OR $this->uri->segment(1) == 'Gantifoto' ){echo "active";} ?>">
+                         <i class="nav-icon fas fa-users"></i>
+                         <p>Akun</p>
+                         <i class="right fas fa-angle-left"></i>
+                     </a>
+                     <!--sub bab-->
+                     <ul class="nav nav-treeview">
+                         <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
+                         <li class="nav-item">
+                             <a href="<?= base_url('User')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='User' ){echo "active";} ?>">
+                                 <i class="nav-icon  fas fa-list"></i>
+                                 <p> Daftar User</p>
+                             </a>
+                         </li>
+                         <?php endif ?>
+                         <li class="nav-item">
+                             <a href="<?= base_url('Ganti')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Ganti' ){echo "active";} ?>">
+                                 <i class="nav-icon fas fa-unlock-alt"></i>
+                                 <p>Ubah Kata Sandi</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('Gantifoto')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Gantifoto' ){echo "active";} ?>">
+                                 <i class="nav-icon fas fa-image"></i>
+                                 <p>Ganti Foto</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <!--end nav sub bab user-->
 
-                    </div>
-                    <!-- /sidebar menu -->
-                </div>
-            </div>
+                 <!--nav sub bab wilayah-->
+                 <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
+                 <li class="nav-item has-treeview">
+                     <a href=""
+                         class="nav-link <?php if($this->uri->segment(1)=='Kecamatan' OR $this->uri->segment(1) == 'Kelurahan' ){echo "active";} ?>">
+                         <i class="nav-icon fas fa-map-marker"></i>
+                         <p>Wilayah</p>
+                         <i class="right fas fa-angle-left"></i>
+                     </a>
+                     <!--sub bab-->
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= base_url('Kecamatan')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Kecamatan' ){echo "active";} ?>">
+                                 <i class="nav-icon  fas fa-circle"></i>
+                                 <p>Kecamatan</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('Kelurahan')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Kelurahan' ){echo "active";} ?>">
+                                 <i class="nav-icon fas fa-circle"></i>
+                                 <p>Kelurahan / Desa</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <?php endif ?>
+                 <!--end nav sub bab wilayah-->
 
-            <!-- top navigation -->
-            <div class="top_nav">
+                 <!--nav sub bab Kelola Data-->
+                 <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
+                 <li class="nav-item has-treeview">
+                     <a href=""
+                         class="nav-link <?php if($this->uri->segment(1)=='Jeruk' OR $this->uri->segment(1) == 'Lahan' OR $this->uri->segment(1) == 'Retail'){echo "active";} ?>">
+                         <i class="nav-icon fas fa-tags"></i>
+                         <p>Kelola Data</p>
+                         <i class="right fas fa-angle-left"></i>
+                     </a>
+                     <!--sub bab-->
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= base_url('Jeruk')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Jeruk' ){echo "active";} ?>">
+                                 <i class="nav-icon  fas fa-circle"></i>
+                                 <p>Data Jeruk</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('Lahan')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Lahan' ){echo "active";} ?>">
+                                 <i class="nav-icon fas fa-list"></i>
+                                 <p>Data Lahan</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('Retail')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='Retail' ){echo "active";} ?>">
+                                 <i class="nav-icon fas fa-home"></i>
+                                 <p>Data Retail</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <?php endif ?>
+                 <!--end nav sub bab Kelola Data-->
 
-                <div class="nav_menu">
-                    <nav class="" role="navigation">
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
+                 <li class="nav-item">
+                     <a data-toggle='modal' data-target='#logout' class="nav-link"><i
+                             class="nav-icon fas fa-sign-out-alt"></i>
+                         <p> Logout</p>
+                     </a>
+                 </li>
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <img src="<?php echo base_url('assets/img/fotouser/'.$img->foto_user);?>" alt="">
-                                    <span class=" fa fa-angle-down"> </span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <!-- <li><a href="#"> Profile</a>
-                                    </li> -->
-                                    <li><a href="<?php echo base_url('login/logout'); ?>"><i
-                                                class="fa fa-sign-out pull-right"></i> Log Out</a>
-                                    </li>
-                                </ul>
-                            </li>
+         </nav>
+         <!-- /.sidebar-menu -->
+     </div>
+     <!-- /.sidebar -->
+ </aside>
 
-                            <li role="presentation">
-                                <a href="<?php echo base_url('Home') ?>"><i class="fa fa-share-square-o"></i> Situs </a>
-                            </li>
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+     <!-- Content Header (Page header) -->
+     <div class="content-header">
+         <div class="container-fluid">
+             <div class="row mb-2">
+                 <div class="col-sm-6">
+                 </div><!-- /.col -->
+                 <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                         <li class="breadcrumb-item"><a href="<?= base_url('Dashboard') ?>">Dashboard</a></li>
+                         <li class="breadcrumb-item active"><?= $title?></li>
+                     </ol>
+                 </div><!-- /.col -->
+             </div><!-- /.row -->
+         </div><!-- /.container-fluid -->
+     </div>
+     <!-- /.content-header -->
+     <!-- Main content -->
+     <div class="content">
+         <div class="container-fluid">
+             <div class="row">
 
-                        </ul>
-                    </nav>
-                </div>
-
-            </div>
-            <!-- /top navigation -->
+                 <!-- Modal -->
+                 <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h5>Logout</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                             </div>
+                             <div class="modal-body">
+                                 Apakah anda yakin ingin Keluar?
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                                 <a href="<?= base_url('login/logout')?>" class="btn btn-success"> Iya </a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!-- Modal -->
