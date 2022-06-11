@@ -186,6 +186,36 @@
                  <?php endif ?>
                  <!--end nav sub bab Kelola Data-->
 
+                 <!--nav sub bab Kelola Limit-->
+                 <?php if ($this->session->userdata('user_status')=='Administrator'): ?>
+                 <li class="nav-item has-treeview">
+                     <a href=""
+                         class="nav-link <?php if($this->uri->segment(1)=='LimitPetani' OR $this->uri->segment(1) == 'LimitRetail'){echo "active";} ?>">
+                         <i class="nav-icon fas fa-tasks"></i>
+                         <p>Kelola Limit Stok</p>
+                         <i class="right fas fa-angle-left"></i>
+                     </a>
+                     <!--sub bab-->
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= base_url('LimitPetani')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='LimitPetani' ){echo "active";} ?>">
+                                 <i class="nav-icon  fas fa-square" aria-hidden="true"></i>
+                                 <p>Limit Petani</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('LimitRetail')?>"
+                                 class="nav-link <?php if($this->uri->segment(1)=='LimitRetail' ){echo "active";} ?>">
+                                 <i class="nav-icon fas fa-square" aria-hidden="true"></i>
+                                 <p>Limit Retail</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <?php endif ?>
+                 <!--end nav sub bab Kelola limit-->
+
                  <li class="nav-item">
                      <a data-toggle='modal' data-target='#logout' class="nav-link"><i
                              class="nav-icon fas fa-sign-out-alt"></i>

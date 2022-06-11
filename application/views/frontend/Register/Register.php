@@ -23,11 +23,11 @@
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="assets/img/orange2.jpg" alt="sing up image"></figure>
-                    <a href="home" class="signup-image-link">Kembali</a>
+                    <a href="home" class="form-kembali">Kembali</a>
                 </div>
 
                 <div class="signin-form">
-                    <h2 class="form-title">Register</h2>
+                    <h2 class="form-title">Daftar Pengguna</h2>
                     <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">

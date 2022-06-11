@@ -15,8 +15,10 @@ class M_Retail extends CI_Model
     public $table_retail   = 'tb_retail';
     public $table_kecamatan = 'tb_kecamatan';
     public $table_jeruk = 'tb_jeruk';
+    public $table_limitretail= 'tb_limitretail';
     public $table_kelurahan = 'tb_kelurahan';
     public $id_retail     = 'tb_retail.id_retail';
+    public $status     = 'tb_retail.status_aktif';
     public $order_retail   = 'ASC';
 
     function get_all_retail()
@@ -24,6 +26,19 @@ class M_Retail extends CI_Model
         $data = $this->db->select('*')
             ->from($this->table_retail)
             ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
+            ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
+            ->order_by($this->id_retail, $this->order_retail)
+            ->get()
+            ->result();
+        return $data;
+    }
+
+    function get_all_retailaktif()
+    {
+        $data = $this->db->select('*')
+            ->from($this->table_retail)
+            ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
+            ->where($this->status, 2)
             ->order_by($this->id_retail, $this->order_retail)
             ->get()
             ->result();
@@ -57,6 +72,7 @@ class M_Retail extends CI_Model
         $data = $this->db->select('*')
             ->from($this->table_retail)
             ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
+            ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
             ->where($this->id_retail, $id)
             ->order_by($this->id_retail, $this->order_retail)
             ->get()
@@ -68,6 +84,7 @@ class M_Retail extends CI_Model
         $data = $this->db->select('*')
             ->from($this->table_retail)
             ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
+            ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
             ->where($this->id_retail, $id)
             ->order_by($this->id_retail, $this->order_retail)
             ->get()

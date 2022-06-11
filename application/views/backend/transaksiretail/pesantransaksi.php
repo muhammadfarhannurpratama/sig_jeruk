@@ -39,7 +39,7 @@ $kd = $this->session->userdata('kdpesan');
                                 <td><?php echo $lahan->nama_pemilik ?></td>
                                 <td><?php echo $lahan->jeruk_nama ?></td>
                                 <td><?php echo $lahan->harga_jeruk ?></td>
-                                <td><?php echo $lahan->jumlah_panen.' Kg' ?></td>
+                                <td><?php echo $stok.' Kg' ?></td>
                                 <td><?php echo form_open_multipart("transaksiretail/aksi_pesan/$lahan->id_lahan");?>
                                     <!-- <form
                                             action="<?php echo base_url()?>transaksiretail/aksi_pesan/<?php echo $lahan->id_lahan ?>"
@@ -50,8 +50,7 @@ $kd = $this->session->userdata('kdpesan');
                                     <input type="hidden" name="user_id" value="<?php echo $lahan->user_id ?>">
                                     <input type="hidden" name="harga" id="harga"
                                         value="<?php echo $lahan->harga_jeruk ?>">
-                                    <input type="hidden" id="stok_sekarang" name="stok_sekarang"
-                                        value="<?= $lahan->jumlah_panen ?>">
+                                    <input type="hidden" id="stok_sekarang" name="stok_sekarang" value="<?= $stok ?>">
                                 </td>
                                 <td>
                                     <input type="number" id="subtotal" name="subtotal" value="<?= $subtotal?>"
@@ -88,6 +87,10 @@ $kd = $this->session->userdata('kdpesan');
                         <label>Alamat Pengiriman</label>
                         <textarea class="form-control" rows="3" name="alamat"
                             required><?php echo $this->session->userdata('alamat');?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga Jual</label>
+                        <input type="text" name="harga_jual" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Upload bukti pembayaran</label>

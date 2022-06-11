@@ -148,4 +148,6 @@ $autoload['model'] = array(
     'M_TransaksiRetail' => 'transaksiretail',
     'M_TransaksiPengguna' => 'transaksipengguna',
     'M_PesananMasuk' => 'pesananmasuk',
+    'M_LimitPetani' => 'limitpetani',
+    'M_LimitRetail' => 'limitretail',
     );

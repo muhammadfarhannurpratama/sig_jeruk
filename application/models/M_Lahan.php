@@ -102,7 +102,20 @@ class M_Lahan extends CI_Model
       $query = $this->db->query ("SELECT * FROM tb_lahan ");
     return $query->num_rows();
     }
-
+    
+    function get_totalpanen()
+    {
+      $query = $this->db->query ("SELECT SUM(jumlah_panen) as jumlah_panen FROM tb_lahan ")
+            ->row();
+        return $query;
+    }
+    function get_totalpetani()
+    {
+      $query = $this->db->query ("SELECT count(*) as jumlahpetani FROM tb_lahan ")
+            ->row();
+        return $query;
+    }
+    
     public function getVariabel($params)
     {
         $this->db->select("*");

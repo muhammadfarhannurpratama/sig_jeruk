@@ -256,15 +256,26 @@ body {
 .signup-content {
   padding: 75px 0; }
 
-.signup-form, .signup-image, .signin-form, .signin-image {
+.signup-form,  .signup-image, .signin-form, .signin-image {
   width: 50%;
   overflow: hidden; }
 
+  .signup-formretail1{
+    width: 50%;
+  overflow: hidden;
+  }
+  .signup-formretail2{
+    width: 50%;
+  overflow: hidden;
+  }
 .signup-image {
   margin: 0 55px; }
 
 .form-title {
   margin-bottom: 33px; }
+.form-titleretail {
+  margin-bottom: 13px;
+text-align: center; }
 
 .signup-image {
   margin-top: 45px; }
@@ -291,6 +302,24 @@ figure {
   .form-submit:hover {
     background: #4292dc; }
 
+.form-kembali {
+  display: inline-block;
+  background: #777;
+  color: #fff;
+  border-bottom: none;
+  width: auto;
+  padding: 15px 39px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  margin-top: 25px;
+  cursor: pointer; }
+
+  .form-kembali:hover {
+    background: #999; }
+
     .formregister-submit {
       display: inline-block;
       background: #449d44;
@@ -308,11 +337,31 @@ figure {
       cursor: pointer; }
     
       .formregister-submit:hover {
+        background: green; }
+
+    .formregisterretail-submit {
+      display: inline-block;
+      background: green;
+      color: #fff;
+      border-bottom: none;
+      width: auto;
+      height: auto;
+      padding: 15px 39px;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      margin-top: 25px;
+      cursor: pointer; }
+    
+      .formregisterretail-submit:hover {
         background: #449d44; }
 
     a {
       text-decoration: none;
     }
+
 #signin {
   margin-top: 16px; }
 
@@ -330,6 +379,16 @@ figure {
   margin-left: 75px;
   margin-right: 75px;
   padding-left: 34px; }
+
+.signup-formretail1 {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 14px; }
+
+.signup-formretail2 {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 14px; }
 
 .register-form {
   width: 100%; }
@@ -565,6 +624,19 @@ label.valid {
     padding-left: 0px;
     /* box-sizing: border-box; */
     padding: 0 30px; }
+  .signup-formretail1 {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    /* box-sizing: border-box; */
+    padding: 0 30px; }
+    
+  .signup-formretail2 {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    /* box-sizing: border-box; */
+    padding: 0 30px; }
 
   .signin-image {
     margin-left: 0px;
@@ -576,7 +648,7 @@ label.valid {
     -o-order: 2;
     -ms-order: 2; }
 
-  .signup-form, .signup-image, .signin-form, .signin-image {
+  .signup-form, .signup-formretail1, .signup-formretail2, .signup-image, .signin-form, .signin-image {
     width: auto; }
 
   .social-login {
@@ -600,7 +672,10 @@ label.valid {
     padding: 0 30px; }
 
   .form-title {
-    text-align: center; } }
+    text-align: center; } 
+  .form-titleretail {
+    text-align: center; }
+  }
 @media screen and (max-width: 400px) {
   .social-login {
     flex-direction: column;

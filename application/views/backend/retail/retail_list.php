@@ -41,7 +41,8 @@
                         <td style="text-align:center" width="200px">
                             <?php
                             echo anchor(site_url('retail/update/'.$retail->id_retail),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); echo ' ';
-                            echo anchor(site_url('retail/delete/'.$retail->id_retail),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"'); 
+                            echo anchor(site_url('retail/delete/'.$retail->id_retail),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"'); echo ' '; 
+                            echo anchor(site_url('retail/aktifkan/'.$retail->id_retail),'<i class="fa fa-edit"></i> Aktifkan', 'class="btn btn-success btn-xs"'); 
                             ?>
                         </td>
                     </tr>

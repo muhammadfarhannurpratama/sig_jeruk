@@ -63,9 +63,16 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="varchar">Limit Stok
-                            <?php echo form_error('limitstok') ?></label>
-                        <input type="number" class="form-control" name="limitstok" id="limistok"
-                            placeholder="Limit Stok" value="<?php echo $limitstok; ?>" />
+                            <?php echo form_error('id_limitretail') ?></label>
+                        <select name="id_limitretail" id="id_limitretail" class="form-control">
+                            <?php
+                foreach ($retail_data as $limit){ ?>
+                            <option value="<?php echo $limit->id_limitretail; ?>">
+                                <?php echo $limit->limitstok; ?></option>
+                            <?php
+                        }
+                        ?>
+                        </select>
                     </div>
 
                     <div class="form-group">

@@ -71,6 +71,9 @@
                                             ?><b class="badge bg-success">dikonfirmasi</b><?php
                                         }
                                         ?></td> -->
+                        <input type="hidden" name="harga" value="<?php echo $data->harga ?>">
+                        <input type="hidden" name="harga_jual" value="<?php echo $data->harga_jual ?>">
+                        <input type="hidden" name="id_jeruk" value="<?php echo $data->id_jeruk ?>">
                         <td style="text-align:center" width="200px">
                             <?php 
                                         if ($data->status_pesanan == 't') {

@@ -17,9 +17,14 @@ class TransaksiRetail extends CI_Controller {
 
     public function pesan($id){
         $this->data['lahan_data'] = $this->lahan->get_all_lahan();
+        $totalpanen = $this->lahan->get_totalpanen();
+        $totalpetani = $this->lahan->get_totalpetani();
+        $limit = $this->limitpetani->get_all_limit();
+        $stok = round(($totalpanen->jumlah_panen - $limit->limitstok)/$totalpetani->jumlahpetani);
         $this->data['start']        = 0;
         $this->data['title']        = 'Transaksi Pembelian';
         $this->data['id']        = $id;
+        $this->data['stok'] = $stok;
         
         $this->data['main_view']	= "backend/transaksiretail/pesantransaksi";
         $this->load->view('backend/public', $this->data);
@@ -86,8 +91,10 @@ class TransaksiRetail extends CI_Controller {
             	'nama_retail' => $nama_retail,
             	'alamat_pengiriman' => $alamat,
             	'id_retail' => $id,
+            	'harga_jual' => $this->input->post('harga_jual',TRUE),
             	'bukti_pembayaran' => $foto,
 			);
+            
 			$this->db->insert('transaksi_retail', $data1);
             $this->session->unset_userdata('kdpesan');
             $wkt = date('dmy').''.time();

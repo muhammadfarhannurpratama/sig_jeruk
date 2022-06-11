@@ -23,7 +23,7 @@
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="assets/img/orange2.jpg" alt="sing up image"></figure>
-                    <a href="home" class="signup-image-link">Kembali</a>
+                    <a href="home" class="form-kembali">Kembali</a>
 
                 </div>
                 <div class="signin-form">
@@ -47,7 +47,8 @@
                         </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
-                            <a href="register" class="formregister-submit">Register</a>
+                            <a href="register" class="formregister-submit">Daftar</a>
+                            <a href="registerretail" class="formregisterretail-submit">Daftar Retail</a>
                         </div>
                     </form>
                 </div>

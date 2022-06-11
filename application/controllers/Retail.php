@@ -72,7 +72,7 @@ class Retail extends CI_Controller {
             $this->data['id_jeruk']     = set_value('id_jeruk', $row->id_jeruk);
             $this->data['berat']     = set_value('berat', $row->berat);
             $this->data['stok']     = set_value('stok', $row->stok);
-            $this->data['limitstok']     = set_value('limitstok', $row->limitstok);
+            $this->data['id_limitretail']     = set_value('id_limitretail', $row->id_limitretail);
             $this->data['harga_jual']     = set_value('harga_jual', $row->harga_jual);
             $this->data['harga_beli']     = set_value('harga_beli', $row->harga_beli);
             $this->data['latitude']     = set_value('latitude', $row->latitude);
@@ -80,6 +80,7 @@ class Retail extends CI_Controller {
             $this->data['user_id']     = set_value('user_id');
             $this->data['data_user']   = $this->user->get_all_user_retail();
             $this->data['jeruk_data']   = $this->jeruk->get_all_jeruk();
+            $this->data['retail_data']   = $this->limitretail->get_all_limit();
 
             $this->data['main_view']	= "backend/retail/retail_form";
         } else {
@@ -88,6 +89,43 @@ class Retail extends CI_Controller {
         </div>');
             redirect(site_url('retail'));
         }
+        $this->load->view('backend/public', $this->data);
+    }
+    
+    public function aktifkan($id){
+       
+        $row = $this->retail->get_by_id_retail($id);
+
+        if ($row) {
+            $this->data['title'] = 'Aktifkan Retail';
+            $this->data['button']       = 'Aktifkan';
+            $this->data['action']       = site_url('retail/aktifkan_action');
+            $this->data['id_retail']      = set_value('id_retail', $row->id_retail);
+            $this->data['data_user']   = $this->user->get_all_user_retail();
+            $this->data['retail_data']   = $this->limitretail->get_all_limit();
+
+            $this->data['main_view']	= "backend/retail/aktifkan_retail";
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Record Not Found</h6>
+        </div>');
+            redirect(site_url('retail'));
+        }
+        $this->load->view('backend/public', $this->data);
+    }
+
+    public function aktifkan_action(){
+        
+            $data = array(
+                'id_limitretail' => $this->input->post('id_limitretail',TRUE),
+                'status_aktif' => 2,
+            );
+
+            $this->retail->update_retail($this->input->post('id_retail', TRUE), $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        <h6> <i class="icon fas fa-check"></i>Edit Data Berhasil</h6>
+        </div>');
+        redirect(site_url('retail'));
         $this->load->view('backend/public', $this->data);
     }
 

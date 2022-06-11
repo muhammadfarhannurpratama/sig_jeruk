@@ -33,12 +33,17 @@
                         </tr>
                         <tr>
                             <th width="20%">Luas Lahan (m2)</th>
-                            <td><?php echo $lahan->luas_lahan; ?></td>
+                            <td><?php echo $lahan->luas_lahan ; ?></td>
                         </tr>
                         <tr>
+                            <th width="20%">Stok Jeruk</th>
+                            <td><?php 
+                            echo $stok?></td>
+                        </tr>
+                        <!-- <tr>
                             <th width="20%">Jumlah Panen (Kg)</th>
                             <td><?php echo $lahan->jumlah_panen; ?></td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <th width="20%">Harga Jeruk</th>
                             <td><?php echo $lahan->harga_jeruk; ?></td>

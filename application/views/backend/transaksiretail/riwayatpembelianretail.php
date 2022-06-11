@@ -13,7 +13,7 @@
                         <th>Kode Pesanan</th>
                         <th>Tanggal Pesan</th>
                         <th>Detail Pesanan</th>
-                        <th>Nama Retail</th>
+                        <th>Bukti Pembayaran</th>
                         <th>Status</th>
                         <!-- <th>Action</th> -->
                     </tr>
