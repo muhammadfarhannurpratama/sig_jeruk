@@ -179,7 +179,7 @@ class Retail extends CI_Controller {
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
                 'berat' => $this->input->post('berat',TRUE),
                 'stok' => $this->input->post('stok',TRUE),
-                'limitstok' => $this->input->post('limitstok',TRUE),
+                'id_limitretail' => $this->input->post('id_limitretail',TRUE),
                 'harga_jual' => $this->input->post('harga_jual',TRUE),
                 'harga_beli' => $this->input->post('harga_beli',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
@@ -230,7 +230,7 @@ class Retail extends CI_Controller {
                 'id_jeruk' => $this->input->post('id_jeruk',TRUE),
                 'berat' => $this->input->post('berat',TRUE),
                 'stok' => $this->input->post('stok',TRUE),
-                'limitstok' => $this->input->post('limitstok',TRUE),
+                'id_limitretail' => $this->input->post('id_limitretail',TRUE),
                 'harga_jual' => $this->input->post('harga_jual',TRUE),
                 'harga_beli' => $this->input->post('harga_beli',TRUE),
                 'latitude' => $this->input->post('latitude',TRUE),
@@ -257,7 +257,7 @@ class Retail extends CI_Controller {
 
         $this->form_validation->set_rules('berat', ' ', 'trim|required');
         $this->form_validation->set_rules('stok', ' ', 'trim|required');
-        $this->form_validation->set_rules('limitstok', ' ', 'trim|required');
+        $this->form_validation->set_rules('id_limitretail', ' ', 'trim|required');
         $this->form_validation->set_rules('harga_beli', ' ', 'trim|required');
         $this->form_validation->set_rules('harga_jual', ' ', 'trim|required');
        

@@ -66,8 +66,9 @@
                             <?php echo form_error('id_limitretail') ?></label>
                         <select name="id_limitretail" id="id_limitretail" class="form-control">
                             <?php
-                foreach ($retail_data as $limit){ ?>
-                            <option value="<?php echo $limit->id_limitretail; ?>">
+                            foreach ($retail_data as $limit){ ?>
+                            <option value="<?php echo $limit->id_limitretail; ?>"
+                                <?php echo ($id_limitretail == $limit->id_limitretail) ? "selected": "" ?>>
                                 <?php echo $limit->limitstok; ?></option>
                             <?php
                         }
@@ -93,8 +94,9 @@
                             Jeruk<?php echo form_error('id_jeruk') ?></label>
                         <select name="id_jeruk" id="id_jeruk" class="form-control">
                             <?php
-                                            foreach ($jeruk_data as $jeruk){ ?>
-                            <option value="<?php echo $jeruk->id_jeruk; ?>">
+                            foreach ($jeruk_data as $jeruk){ ?>
+                            <option value="<?php echo $jeruk->id_jeruk; ?>"
+                                <?php echo ($id_jeruk == $jeruk->id_jeruk) ? "selected": "" ?>>
                                 <?php echo $jeruk->jeruk_nama; ?></option>
                             <?php
                                             }
