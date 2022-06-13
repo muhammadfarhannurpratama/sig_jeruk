@@ -21,6 +21,7 @@
                         <th>Limit Stok</th>
                         <th>Harga Jual</th>
                         <th>Harga Beli</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -38,11 +39,21 @@
                         <td><?php echo $retail->limitstok ?></td>
                         <td><?php echo $retail->harga_jual ?></td>
                         <td><?php echo $retail->harga_beli ?></td>
+                        <td><?php 
+                                if ($retail->status_aktif == '1') {
+                                    ?><span class="badge badge-secondary">Belum Aktif</span><?php
+                                } elseif ($retail->status_aktif == '2') {
+                                    ?><span class="badge badge-success">Aktif</span><?php
+                                }
+                                ?></td>
                         <td style="text-align:center" width="200px">
                             <?php
                             echo anchor(site_url('retail/update/'.$retail->id_retail),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); echo ' ';
                             echo anchor(site_url('retail/delete/'.$retail->id_retail),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"'); echo ' '; 
-                            echo anchor(site_url('retail/aktifkan/'.$retail->id_retail),'<i class="fa fa-edit"></i> Aktifkan', 'class="btn btn-success btn-xs"'); 
+                            if ($retail->status_aktif == '1') {
+                                echo anchor(site_url('retail/aktifkan/'.$retail->id_retail),'<i class="fa fa-edit"></i> Aktifkan', 'class="btn btn-success btn-xs"'); 
+                            } elseif ($retail->status_aktif == '2') {
+                            }                           
                             ?>
                         </td>
                     </tr>
