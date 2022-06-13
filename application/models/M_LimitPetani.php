@@ -21,6 +21,11 @@ class M_Limitpetani extends CI_Model
             ->row();
         return $data;
     }
+    function get_all_limit1()
+    {
+        $this->db->order_by($this->id_limitpetani, $this->order_limit);
+        return $this->db->get($this->table_limitpetani)->result();
+    }
     function get_all_limit2()
     {
         $this->db->order_by($this->id_limitpetani, $this->order_limit);

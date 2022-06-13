@@ -18,7 +18,7 @@ class LimitPetani extends CI_Controller {
     public function index()
     {
         $start = 0;
-        $limitpetani = $this->limitpetani->get_all_limit();
+        $limitpetani = $this->limitpetani->get_all_limit1();
 
         $this->data['limitpetani_data']      = $limitpetani;
         $this->data['start']            = $start;
