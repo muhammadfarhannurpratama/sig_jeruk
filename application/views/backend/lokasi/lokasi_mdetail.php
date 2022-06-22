@@ -32,8 +32,8 @@
                             <td><?php echo $retail->berat; ?></td>
                         </tr>
                         <tr>
-                            <th width="20%">Limit Stok</th>
-                            <td><?php echo $retail->limitstok; ?></td>
+                            <th width="20%">Stok</th>
+                            <td><?php echo $retail->stok; ?></td>
                         </tr>
                         <tr>
                             <th width="20%">Harga Jeruk</th>
