@@ -16,15 +16,19 @@ class TransaksiRetail extends CI_Controller {
     }
 
     public function pesan($id){
+        
+        $id_retail = $this->session->userdata('user_id');
         $this->data['lahan_data'] = $this->lahan->get_all_lahan();
+        $this->data['retail'] = $this->retail->get_by_id_retail($id_retail);
         $totalpanen = $this->lahan->get_totalpanen();
-        $totalpetani = $this->lahan->get_totalpetani();
         $limit = $this->limitpetani->get_all_limit();
-        $stok = round(($totalpanen->jumlah_panen - $limit->limitstok)/$totalpetani->jumlahpetani);
+        $totalretail = $this->retail->get_totalretail();
+        $stokpetani = ($totalpanen->jumlah_panen - $limit->limitstok)/$totalretail->jumlahretail;
+
         $this->data['start']        = 0;
         $this->data['title']        = 'Transaksi Pembelian';
         $this->data['id']        = $id;
-        $this->data['stok'] = $stok;
+        $this->data['limitstok'] = $stokpetani;
         
         $this->data['main_view']	= "backend/transaksiretail/pesantransaksi";
         $this->load->view('backend/public', $this->data);
@@ -50,7 +54,7 @@ class TransaksiRetail extends CI_Controller {
             'id_lahan' => $id,
             'harga' => $harga,
             'qty' => $qty,
-            'subtotal' => $harga,
+            'subtotal' => $total,
 		);
 		$this->db->insert('keranjang_retail', $data);
 

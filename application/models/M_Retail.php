@@ -26,7 +26,7 @@ class M_Retail extends CI_Model
         $data = $this->db->select('*')
             ->from($this->table_retail)
             ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
-            ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
+            // ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
             ->order_by($this->id_retail, $this->order_retail)
             ->get()
             ->result();
@@ -72,7 +72,7 @@ class M_Retail extends CI_Model
         $data = $this->db->select('*')
             ->from($this->table_retail)
             ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
-            ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
+            // ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
             ->where($this->id_retail, $id)
             ->order_by($this->id_retail, $this->order_retail)
             ->get()
@@ -84,7 +84,7 @@ class M_Retail extends CI_Model
         $data = $this->db->select('*')
             ->from($this->table_retail)
             ->join($this->table_jeruk, 'tb_retail.id_jeruk = tb_jeruk.id_jeruk', 'left')
-            ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
+            // ->join($this->table_limitretail, 'tb_retail.id_limitretail = tb_limitretail.id_limitretail', 'left')
             ->where($this->id_retail, $id)
             ->order_by($this->id_retail, $this->order_retail)
             ->get()
@@ -111,6 +111,13 @@ class M_Retail extends CI_Model
         }else {
             return array();
         }
+    }
+
+    function get_totalretail()
+    {
+      $query = $this->db->query ("SELECT count(*) as jumlahretail FROM tb_retail ")
+            ->row();
+        return $query;
     }
 
     function insert_retail($data)

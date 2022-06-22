@@ -27,11 +27,16 @@
                         <tr>
                             <th width="20%">Stok (Kg)</th>
                             <td><?php 
+                            echo $retail->stok; ?></td>
+                        </tr>
+                        <!-- <tr>
+                            <th width="20%">Stok (Kg)</th>
+                            <td><?php 
                             $stok = $retail->stok;
                             $stoklimit = $retail->limitstok;
                             $stokjual = $stok - $stoklimit; 
                             echo $stokjual; ?></td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <th width="20%">Berat</th>
                             <td><?php echo $retail->berat; ?></td>

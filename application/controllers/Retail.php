@@ -38,7 +38,6 @@ class Retail extends CI_Controller {
         $this->data['id_retail']      = set_value('id_retail');
         $this->data['nama_retail']     = set_value('nama_retail');
         $this->data['stok']     = set_value('stok');
-        $this->data['limitstok']     = set_value('limitstok');
         $this->data['lokasi_retail']     = set_value('lokasi_retail');
         $this->data['no_hp']     = set_value('no_hp');
         $this->data['id_jeruk']     = set_value('id_jeruk');
@@ -72,7 +71,6 @@ class Retail extends CI_Controller {
             $this->data['id_jeruk']     = set_value('id_jeruk', $row->id_jeruk);
             $this->data['berat']     = set_value('berat', $row->berat);
             $this->data['stok']     = set_value('stok', $row->stok);
-            $this->data['id_limitretail']     = set_value('id_limitretail', $row->id_limitretail);
             $this->data['harga_jual']     = set_value('harga_jual', $row->harga_jual);
             $this->data['harga_beli']     = set_value('harga_beli', $row->harga_beli);
             $this->data['latitude']     = set_value('latitude', $row->latitude);
@@ -114,20 +112,20 @@ class Retail extends CI_Controller {
         $this->load->view('backend/public', $this->data);
     }
 
-    public function aktifkan_action(){
+    // public function aktifkan_action(){
         
-            $data = array(
-                'id_limitretail' => $this->input->post('id_limitretail',TRUE),
-                'status_aktif' => 2,
-            );
+    //         $data = array(
+    //             'id_limitretail' => $this->input->post('id_limitretail',TRUE),
+    //             'status_aktif' => 2,
+    //         );
 
-            $this->retail->update_retail($this->input->post('id_retail', TRUE), $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        <h6> <i class="icon fas fa-check"></i>Edit Data Berhasil</h6>
-        </div>');
-        redirect(site_url('retail'));
-        $this->load->view('backend/public', $this->data);
-    }
+    //         $this->retail->update_retail($this->input->post('id_retail', TRUE), $data);
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+    //     <h6> <i class="icon fas fa-check"></i>Edit Data Berhasil</h6>
+    //     </div>');
+    //     redirect(site_url('retail'));
+    //     $this->load->view('backend/public', $this->data);
+    // }
 
     public function delete($id){
         $row = $this->retail->get_by_id_retail($id);

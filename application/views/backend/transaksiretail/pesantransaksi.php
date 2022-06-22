@@ -39,7 +39,7 @@ $kd = $this->session->userdata('kdpesan');
                                 <td><?php echo $lahan->nama_pemilik ?></td>
                                 <td><?php echo $lahan->jeruk_nama ?></td>
                                 <td><?php echo $lahan->harga_jeruk ?></td>
-                                <td><?php echo $stok.' Kg' ?></td>
+                                <td><?php echo $lahan->jumlah_panen.' Kg' ?></td>
                                 <td><?php echo form_open_multipart("transaksiretail/aksi_pesan/$lahan->id_lahan");?>
                                     <!-- <form
                                             action="<?php echo base_url()?>transaksiretail/aksi_pesan/<?php echo $lahan->id_lahan ?>"
@@ -50,7 +50,19 @@ $kd = $this->session->userdata('kdpesan');
                                     <input type="hidden" name="user_id" value="<?php echo $lahan->user_id ?>">
                                     <input type="hidden" name="harga" id="harga"
                                         value="<?php echo $lahan->harga_jeruk ?>">
-                                    <input type="hidden" id="stok_sekarang" name="stok_sekarang" value="<?= $stok ?>">
+                                    <?php 
+                                     $sisastok = $limitstok - $retail->stok ;
+                                    if ($retail->stok > $lahan->jumlah_panen) {
+                                        echo "<input type='hidden' id='stok_sekarang' name='stok_sekarang'
+                                        value='$sisastok'>";
+                                    } elseif ($retail->stok <= $lahan->jumlah_panen) {
+                                        echo "<input type='hidden' id='stok_sekarang' name='stok_sekarang'
+                                            value='$lahan->jumlah_panen'>";
+                                        }
+
+                                        ?>
+                                    <!-- <input type="hidden" id="stok_sekarang" name="stok_sekarang"
+                                        value="<?= $lahan->jumlah_panen ?>"> -->
                                 </td>
                                 <td>
                                     <input type="number" id="subtotal" name="subtotal" value="<?= $subtotal?>"
@@ -116,7 +128,7 @@ function hitungtotal() {
     var stok_sekarang = parseInt(document.getElementById("stok_sekarang").value)
     var qty = parseInt(document.getElementById("qty").value)
     if (stok_sekarang < qty) {
-        alert('stok tidak tersedia! stok tersedia : ' + stok_sekarang)
+        alert('stok tersedia / Limit anda : ' + stok_sekarang)
         window.location.reload();
     } else {}
 

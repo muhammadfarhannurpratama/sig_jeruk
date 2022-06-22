@@ -53,18 +53,13 @@ class Lokasi extends CI_Controller {
     public function mdetail($id){
         $row = $this->lahan->get_by_id_lahan($id);
         $totalpanen = $this->lahan->get_totalpanen();
-        $totalpetani = $this->lahan->get_totalpetani();
         $limit = $this->limitpetani->get_all_limit();
-        $stok = round(($totalpanen->jumlah_panen - $limit->limitstok)/$totalpetani->jumlahpetani);
-        // var_dump($stok);
-        // die;
+        $totalretail = $this->retail->get_totalretail();
+        $stokpetani = ($totalpanen->jumlah_panen - $limit->limitstok)/$totalretail->jumlahretail;
+        
         if ($row) {
             $this->data['lahan']  = $row;
             $this->data['title'] = $row->nama_pemilik;
-            $this->data['stok'] = $stok;
-            // var_dump($this->data['limitpetani']);
-            // die;
-
             $this->data['main_view']	= "backend/lokasi/lokasi-detail";
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

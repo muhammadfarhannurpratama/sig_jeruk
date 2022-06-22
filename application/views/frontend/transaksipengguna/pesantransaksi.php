@@ -35,12 +35,15 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                             <?php echo $retail->nama_retail; ?>
                         </td>
                         <td> <?php echo $retail->jeruk_nama; ?></td>
-                        <td> <?php $stok = $retail->stok;
+                        <td> <?php echo $retail->stok;
+                            ?></td>
+                        <td>
+                            <!-- <td> <?php $stok = $retail->stok;
                             $stoklimit = $retail->limitstok;
                             $stokjual = $stok - $stoklimit; 
                             echo $stokjual; 
                             ?></td>
-                        <td>
+                        <td> -->
                             <form action="<?php echo base_url('transaksipengguna/checkout')?>" method="post">
                                 <input type="number" name="qty" id="qty" class="form_control" oninput="hitungtotal()"
                                     required oninput="setCustomValidity('')" value="<?= $jml?>">
@@ -53,10 +56,14 @@ $no_order = date('Ymd').strtoupper(random_string('alnum', 8)) ;
                                 <input type="hidden" name="name" value="<?php echo $retail->jeruk_nama ?>">
                                 <?php 
                                 $stok = $retail->stok;
+                                echo "<input type='hidden' id='stok_sekarang' name='stok_sekarang' value='$stok'>";
+                                ?>
+                                <!-- <?php 
+                                $stok = $retail->stok;
                                 $stoklimit = $retail->limitstok;
                                 $stokjual = $stok - $stoklimit;
                                 echo "<input type='hidden' id='stok_sekarang' name='stok_sekarang' value='$stokjual'>";
-                                ?>
+                                ?> -->
                         </td>
                         <td class="text-center"><?= $retail->berat ?> Kg</td>
                         <td style="text-align:right">Rp. <?php echo number_format($retail->harga_jual); ?></td>

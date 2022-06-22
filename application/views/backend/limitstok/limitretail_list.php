@@ -2,10 +2,6 @@
     <div class="card card-light">
         <div class="card-header">
             <h3 class="card-title">List Data Limit Stok</h3>
-
-            <div class="text-right">
-                <?php echo anchor(site_url('limitretail/create'), '<i class="fa fa-plus-square"> </i> Tambah Limit', 'class="btn btn-primary text-light"'); ?>
-            </div>
             <!-- /.card-tools -->
         </div>
         <!-- /.card-header -->
@@ -15,25 +11,24 @@
                 <thead>
                     <tr>
                         <th width="80px">No</th>
+                        <th>Nama Retail</th>
                         <th>Limit Stok</th>
-                        <th>Action</th>
+                        <th>Sisa Limit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $start = 0;
-                    foreach ($limitretail_data as $limitretail)
+                    foreach ($retail_data as $retail)
                     {
                         ?>
                     <tr>
                         <td><?php echo ++$start ?></td>
-                        <td><?php echo $limitretail->limitstok; ?></td>
-                        <td style="text-align:center" width="200px">
-                            <?php
-                            echo anchor(site_url('limitretail/update/'.$limitretail->id_limitretail),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); echo ' ';
-                            echo anchor(site_url('limitretail/delete/'.$limitretail->id_limitretail),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"');
-                            ?>
-                        </td>
+                        <td><?php echo $retail->nama_retail; ?></td>
+                        <td><?php echo $limitstok; ?></td>
+                        <td><?php 
+                        $sisastok = $limitstok - $retail->stok ;
+                        echo $sisastok; ?></td>
                     </tr>
                     <?php
                     }

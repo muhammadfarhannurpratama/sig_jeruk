@@ -18,7 +18,7 @@
                         <th>Nama Retail</th>
                         <th>Telepon</th>
                         <th>Stok</th>
-                        <th>Limit Stok</th>
+                        <!-- <th>Limit Stok</th> -->
                         <th>Harga Jual</th>
                         <th>Harga Beli</th>
                         <th>Status</th>
@@ -36,7 +36,7 @@
                         <td><?php echo $retail->nama_retail ?></td>
                         <td><?php echo $retail->no_hp ?></td>
                         <td><?php echo $retail->stok ?></td>
-                        <td><?php echo $retail->limitstok ?></td>
+                        <!-- <td><?php echo $retail->limitstok ?></td> -->
                         <td><?php echo $retail->harga_jual ?></td>
                         <td><?php echo $retail->harga_beli ?></td>
                         <td><?php 
@@ -50,10 +50,10 @@
                             <?php
                             echo anchor(site_url('retail/update/'.$retail->id_retail),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); echo ' ';
                             echo anchor(site_url('retail/delete/'.$retail->id_retail),'<i class="fa fa-trash"></i> Delete','class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah Anda Yakin Untuk Menghapus ?\')"'); echo ' '; 
-                            if ($retail->status_aktif == '1') {
-                                echo anchor(site_url('retail/aktifkan/'.$retail->id_retail),'<i class="fa fa-edit"></i> Aktifkan', 'class="btn btn-success btn-xs"'); 
-                            } elseif ($retail->status_aktif == '2') {
-                            }                           
+                            // if ($retail->status_aktif == '1') {
+                            //     echo anchor(site_url('retail/aktifkan/'.$retail->id_retail),'<i class="fa fa-edit"></i> Aktifkan', 'class="btn btn-success btn-xs"'); 
+                            // } elseif ($retail->status_aktif == '2') {
+                            // }                           
                             ?>
                         </td>
                     </tr>

@@ -64,8 +64,9 @@ class RegisterRetail extends CI_Controller {
                 'latitude' => $this->input->post('latitude',TRUE),
                 'longitude' => $this->input->post('longitude',TRUE),
                 'user_id' => $user_id,
+                'stok' => 0,
                 'foto_retail' => $foto,
-                'status_aktif' => 1,
+                'status_aktif' => 2,
             );
             $this->retail->insert_retail($data2);
             
