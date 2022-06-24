@@ -13,6 +13,7 @@
                         <th width="80px">No</th>
                         <th>Nama Retail</th>
                         <th>Limit Stok</th>
+                        <th>Stok</th>
                         <th>Sisa Limit</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                         <td><?php echo ++$start ?></td>
                         <td><?php echo $retail->nama_retail; ?></td>
                         <td><?php echo $limitstok; ?></td>
+                        <td><?php echo $retail->stok ?>
                         <td><?php 
                         $sisastok = $limitstok - $retail->stok ;
                         echo $sisastok; ?></td>

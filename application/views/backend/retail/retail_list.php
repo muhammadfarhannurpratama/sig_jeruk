@@ -16,11 +16,14 @@
                     <tr>
                         <th width="80px">No</th>
                         <th>Nama Retail</th>
+                        <th>Lokasi Retail</th>
                         <th>Telepon</th>
-                        <th>Stok</th>
+                        <!-- <th>Stok</th> -->
                         <!-- <th>Limit Stok</th> -->
                         <th>Harga Jual</th>
                         <th>Harga Beli</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -34,11 +37,14 @@
                     <tr>
                         <td><?php echo ++$start ?></td>
                         <td><?php echo $retail->nama_retail ?></td>
+                        <td><?php echo $retail->lokasi_retail ?></td>
                         <td><?php echo $retail->no_hp ?></td>
-                        <td><?php echo $retail->stok ?></td>
+                     <!--   <td><?php echo $retail->stok ?></td> -->
                         <!-- <td><?php echo $retail->limitstok ?></td> -->
                         <td><?php echo $retail->harga_jual ?></td>
                         <td><?php echo $retail->harga_beli ?></td>
+                        <td><?php echo $retail->latitude ?></td>
+                        <td><?php echo $retail->longitude ?></td>
                         <td><?php 
                                 if ($retail->status_aktif == '1') {
                                     ?><span class="badge badge-secondary">Belum Aktif</span><?php

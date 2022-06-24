@@ -14,7 +14,7 @@
             <table class="table table-bordered" id="example1">
                 <thead>
                     <tr>
-                        <th width="80px">No</th>
+                      <!--  <th width="80px">No</th> -->
                         <th>Limit Stok</th>
                         <th>Action</th>
                     </tr>
@@ -26,7 +26,7 @@
                     {
                         ?>
                     <tr>
-                        <td><?php echo ++$start ?></td>
+                     <!--   <td><?php echo ++$start ?></td> -->
                         <td><?php echo $limitpetani->limitstok; ?></td>
                         <td style="text-align:center" width="200px">
                             <?php

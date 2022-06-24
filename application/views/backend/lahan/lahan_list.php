@@ -16,9 +16,14 @@
                     <tr>
                         <th width="80px">No</th>
                         <th>Nama Pemilik Lahan</th>
+                        <th>Lokasi Lahan</th>
                         <th>Telepon</th>
+                        <th>Luas Lahan</th>
+                        <th>Jumlah Panen</th>
                         <th>Kecamatan</th>
                         <th>Kelurahan</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -31,9 +36,14 @@
                     <tr>
                         <td><?php echo ++$start ?></td>
                         <td><?php echo $lahan->nama_pemilik ?></td>
+                        <td><?php echo $lahan->lokasi_lahan ?></td>
                         <td><?php echo $lahan->no_hp ?></td>
+                        <td><?php echo $lahan->luas_lahan ?></td>
+                        <td><?php echo $lahan->jumlah_panen ?></td>
                         <td><?php echo $lahan->kecamatan_nama ?></td>
                         <td><?php echo $lahan->kelurahan_nama ?></td>
+                        <td><?php echo $lahan->latitude ?></td>
+                        <td><?php echo $lahan->longitude ?></td>
                         <td style="text-align:center" width="200px">
                             <?php
                                 echo anchor(site_url('lahan/update/'.$lahan->id_lahan),'<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs"'); echo ' ';
