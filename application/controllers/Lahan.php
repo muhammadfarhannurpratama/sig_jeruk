@@ -19,8 +19,10 @@ class Lahan extends CI_Controller {
     {
         $start = 0;
         $lahan = $this->lahan->get_all_lahan();
+        $totalpanen = $this->lahan->get_totalpanen();
 
         $this->data['lahan_data']   = $lahan;
+        $this->data['totalpanen']   = $totalpanen;
         $this->data['start']        = $start;
         $this->data['title'] = 'Master Lahan';
 

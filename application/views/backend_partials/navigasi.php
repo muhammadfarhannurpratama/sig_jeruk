@@ -201,7 +201,7 @@
                              <a href="<?= base_url('LimitPetani')?>"
                                  class="nav-link <?php if($this->uri->segment(1)=='LimitPetani' ){echo "active";} ?>">
                                  <i class="nav-icon  fas fa-square" aria-hidden="true"></i>
-                                 <p>Limit Petani</p>
+                                 <p>Limit Desa</p>
                              </a>
                          </li>
                          <li class="nav-item">

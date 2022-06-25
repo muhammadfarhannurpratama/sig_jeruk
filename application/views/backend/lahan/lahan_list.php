@@ -55,6 +55,13 @@
                         }
                         ?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Total Panen</td>
+                        <td colspan="1"><?=  $totalpanen->jumlah_panen ;?></td>
+                        <td colspan="5"></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
         <!-- /.card-body -->
