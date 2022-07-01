@@ -8,7 +8,7 @@
             <?php echo $this->session->flashdata('check'); ?>
             <?php echo form_open_multipart($action);?>
             <div class="form-group">
-                <label for="varchar">Nama Kelurahan <?php echo form_error('kecamatan_nama') ?></label>
+                <label for="varchar">Nama Kelurahan <?php echo form_error('kelurahan_nama') ?></label>
                 <input type="text" class="form-control" name="kelurahan_nama" id="kelurahan_nama"
                     placeholder="Nama Kelurahan" value="<?php echo $kelurahan_nama; ?>" />
             </div>
@@ -34,5 +34,6 @@
         </div>
         <!--end card body-->
     </div>
+</div>
 </div>
 <!--end div halaman add-->

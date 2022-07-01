@@ -60,8 +60,8 @@
                     </div>
                 </div>
 
-                <!-- <div class="col-sm-6">
-                    <div class="form-group">
+                <div class="col-sm-6">
+                    <!-- <div class="form-group">
                         <label for="varchar">Limit Stok
                             <?php echo form_error('id_limitretail') ?></label>
                         <select name="id_limitretail" id="id_limitretail" class="form-control">
@@ -76,52 +76,52 @@
                         </select>
                     </div> -->
 
-                <div class="form-group">
-                    <label for="varchar">Harga Jual
-                        <?php echo form_error('harga_jual') ?></label>
-                    <input type="number" class="form-control" name="harga_jual" id="harga_jual"
-                        placeholder="Harga Jual Jeruk" value="<?php echo $harga_jual; ?>" />
-                </div>
-                <div class="form-group">
-                    <label for="varchar">Harga Beli
-                        <?php echo form_error('harga_beli') ?></label>
-                    <input type="number" class="form-control" name="harga_beli" id="harga_beli"
-                        placeholder="Harga Beli Jeruk" value="<?php echo $harga_beli; ?>" />
-                </div>
+                    <div class="form-group">
+                        <label for="varchar">Harga Jual
+                            <?php echo form_error('harga_jual') ?></label>
+                        <input type="number" class="form-control" name="harga_jual" id="harga_jual"
+                            placeholder="Harga Jual Jeruk" value="<?php echo $harga_jual; ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="varchar">Harga Beli
+                            <?php echo form_error('harga_beli') ?></label>
+                        <input type="number" class="form-control" name="harga_beli" id="harga_beli"
+                            placeholder="Harga Beli Jeruk" value="<?php echo $harga_beli; ?>" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="varchar">Jenis
-                        Jeruk<?php echo form_error('id_jeruk') ?></label>
-                    <select name="id_jeruk" id="id_jeruk" class="form-control">
-                        <?php
+                    <div class="form-group">
+                        <label for="varchar">Jenis
+                            Jeruk<?php echo form_error('id_jeruk') ?></label>
+                        <select name="id_jeruk" id="id_jeruk" class="form-control">
+                            <?php
                             foreach ($jeruk_data as $jeruk){ ?>
-                        <option value="<?php echo $jeruk->id_jeruk; ?>"
-                            <?php echo ($id_jeruk == $jeruk->id_jeruk) ? "selected": "" ?>>
-                            <?php echo $jeruk->jeruk_nama; ?></option>
-                        <?php
+                            <option value="<?php echo $jeruk->id_jeruk; ?>"
+                                <?php echo ($id_jeruk == $jeruk->id_jeruk) ? "selected": "" ?>>
+                                <?php echo $jeruk->jeruk_nama; ?></option>
+                            <?php
                                             }
                                             ?>
-                    </select>
-                </div>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="varchar">Latitude<?php echo form_error('latitude') ?></label>
-                    <input type="text" class="form-control" name="latitude" id="latitude"
-                        value="<?php echo $latitude; ?>" />
-                </div>
-                <div class="form-group">
-                    <label for="varchar">Longitude<?php echo form_error('lng') ?></label>
-                    <input type="text" class="form-control" name="longitude" id="longitude"
-                        value="<?php echo $longitude; ?>" />
+                    <div class="form-group">
+                        <label for="varchar">Latitude<?php echo form_error('latitude') ?></label>
+                        <input type="text" class="form-control" name="latitude" id="latitude"
+                            value="<?php echo $latitude; ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="varchar">Longitude<?php echo form_error('lng') ?></label>
+                        <input type="text" class="form-control" name="longitude" id="longitude"
+                            value="<?php echo $longitude; ?>" />
+                    </div>
                 </div>
             </div>
+            <input type="hidden" name="id_retail" value="<?php echo $id_retail; ?>" />
+            <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
+            <a href="<?php echo site_url('Retail') ?>" class="btn btn-default">Cancel</a>
+            <?= form_close()?>
         </div>
-        <input type="hidden" name="id_retail" value="<?php echo $id_retail; ?>" />
-        <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-        <a href="<?php echo site_url('Retail') ?>" class="btn btn-default">Cancel</a>
-        <?= form_close()?>
+        <!--end card body-->
     </div>
-    <!--end card body-->
-</div>
 </div>
 <!--end div halaman add-->

@@ -65,48 +65,48 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <?php
-            echo form_open_multipart('pesanan_saya/bayar/'.$pesanan->kode_transaksipengguna);
-            ?>
-            <div class="card-body">
-                <div class="form-group">
-                    <label>Atas Nama</label>
-                    <input name="atas_nama" class="form-control" placeholder="Atas Nama" required>
+            <form role="form" action="<?= base_url('pesanan_saya/bayar/'.$pesanan->kode_transaksipengguna); ?>"
+                method="post" enctype="multipart/form-data">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Atas Nama</label>
+                        <input name="atas_nama" class="form-control" placeholder="Atas Nama" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Bank</label>
+                        <select name="nama_bank" class="form-control" required>
+                            <option>
+                                <---Pilih Bank--->
+                            </option>
+                            <option value="BRI">BRI</option>
+                            <option value="BRI">BRI</option>
+                            <option value="BCA">BCA</option>
+                            <option value="BSI">BSI</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>No. Rekening</label>
+                        <input name="no_rek" class="form-control" placeholder="No. Rekening" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputFile">Bukti Pembayaran</label>
+                        <input type="file" name="bukti_bayar" class="form-control" required>
+
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Nama Bank</label>
-                    <select name="nama_bank" class="form-control" required>
-                        <option>
-                            <---Pilih Bank--->
-                        </option>
-                        <option value="BRI">BRI</option>
-                        <option value="BRI">BRI</option>
-                        <option value="BCA">BCA</option>
-                        <option value="BSI">BSI</option>
-                    </select>
+
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <a href="<?= base_url('pesanan_saya') ?>" class="btn btn-success">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
-
-                <div class="form-group">
-                    <label>No. Rekening</label>
-                    <input name="no_rek" class="form-control" placeholder="No. Rekening" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputFile">Bukti Pembayaran</label>
-                    <input type="file" name="bukti_bayar" class="form-control" required>
-
-                </div>
-            </div>
-
-
-            <!-- /.card-body -->
-
-            <div class="card-footer">
-                <a href="<?= base_url('pesanan_saya') ?>" class="btn btn-success">Kembali</a>
-                <button type="submit" class="btn btn-primary">Kirim</button>
-            </div>
-            <?php echo form_close() ?>
+            </form>
         </div>
     </div>
 

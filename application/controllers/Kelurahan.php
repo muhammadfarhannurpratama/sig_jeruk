@@ -52,7 +52,7 @@ class Kelurahan extends CI_Controller {
             $this->data['title'] = 'Update Data Kelurahan';
             $this->data['button']       = 'Update Data';
             $this->data['action']        = site_url('kelurahan/update_action');
-            $this->data['kelurahan_id']      = set_value('kelurahan_id');
+            $this->data['kelurahan_id']      = set_value('kelurahan_id',$row->kelurahan_id);
             $this->data['kecamatan_id']      = set_value('kecamatan_id', $row->kecamatan_id);
 
             $this->data['kecamatan_data']   = $this->kecamatan->get_all_kecamatan();
@@ -112,10 +112,10 @@ class Kelurahan extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             redirect(site_url('kelurahan/update/'.$this->input->post('kelurahan_id', TRUE)));
         } else {
-            //cek apakah input password baru atau tidak
+           $nama_kelurahan = $this->input->post('kelurahan_nama',TRUE);
             $data = array(
-                'kelurahan_nama' => $this->input->post('kelurahan_nama',TRUE),
-                'kecamatan_id' => $this->input->post('kecamatan_id',TRUE),
+                'kelurahan_nama' => $nama_kelurahan,
+                'kecamatan_id' => $this->input->post('kecamatan_id',TRUE)
             );
 
             $this->kelurahan->update_kelurahan($this->input->post('kelurahan_id', TRUE), $data);
@@ -129,7 +129,7 @@ class Kelurahan extends CI_Controller {
 
     function _rules_kelurahan()
     {
-        $this->form_validation->set_rules('kelurahan_nama', ' ', 'trim|required');
+        $this->form_validation->set_rules('kelurahan_nama', 'kelurahan_nama', 'trim|required');
         $this->form_validation->set_rules('kelurahan_id', 'kelurahan_id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }

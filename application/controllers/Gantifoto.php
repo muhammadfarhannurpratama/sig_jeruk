@@ -37,37 +37,27 @@ class Gantifoto extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('foto')) {
+        if (!$this->upload->do_upload('foto_user')) {
             $response = [
                 'status' => 'error',
                 'message' => $this->upload->display_errors()
             ];
 
             $this->session->set_flashdata('response', $response);
-            return redirect('user');
+            return redirect('Gantifoto');
         }
 
         $data_foto = $this->upload->data();
-        $data['foto_user'] = $data_foto['file_name'];
+        $foto = $data_foto['file_name'];
         // $result = $this->user->update_data($this->session->id_user, $data);
-        $this->db->set('foto_user',$data['foto_user']);
-        $this->db->where('user_id',$this->session->user_id);
-        $result=$this->db->update('tb_user');
-        if ($result) {
-            $response = [
-                'status' => 'success',
-                'message' => 'Foto Profil berhasil diubah!'
-            ];
-        } else {
-            $response = [
-                'status' => 'error',
-                'message' => 'Foto Profil gagal diubah!'
-            ];
-            unlink($data_foto['full_path']);
-        }
-        
-        $this->session->set_flashdata('response', $response);
-        redirect('user');
+        $data = array(
+            'foto_user' => $foto,
+        );
+    $this->user->update_user($this->input->post('user_id', TRUE), $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+<h6> <i class="icon fas fa-check"></i>Edit Foto Berhasil</h6>
+</div>');
+        redirect('Gantifoto');
     }
     
 }

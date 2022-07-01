@@ -45,12 +45,12 @@ class Pesanan_saya extends CI_Controller
         $config = [
             'upload_path' => './assets/img/buktibayar',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => date('Ymd').strtoupper(random_string('alnum', 8))
+            'file_name' => round(microtime(date('dY')))
         ];
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('foto')) {
+        if (!$this->upload->do_upload('bukti_bayar')) {
             $response = [
                 'status' => 'error',
                 'message' => $this->upload->display_errors()

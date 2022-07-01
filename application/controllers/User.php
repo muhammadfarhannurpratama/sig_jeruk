@@ -167,7 +167,7 @@ class User extends CI_Controller {
             //cek apakah input password baru atau tidak
             if (strip_tags($this->input->post('user_pass', TRUE) != "")){
                 $data = array(
-                    'user_user' => $this->input->post('user_user',TRUE),
+                    'user_username' => $this->input->post('user_username',TRUE),
                     'user_pass' => password_hash($this->input->post('user_pass',TRUE), PASSWORD_DEFAULT),
                     'user_namalengkap' => $this->input->post('user_namalengkap',TRUE),
                     'user_status' => $this->input->post('user_status',TRUE),

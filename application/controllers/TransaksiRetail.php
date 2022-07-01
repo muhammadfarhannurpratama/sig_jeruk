@@ -71,7 +71,7 @@ class TransaksiRetail extends CI_Controller {
         $config = [
             'upload_path' => './assets/img/buktibayar',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => date('Ymd').strtoupper(random_string('alnum', 8))
+            'file_name' => round(microtime(date('dY')))
         ];
 
         $this->load->library('upload', $config);
@@ -87,6 +87,9 @@ class TransaksiRetail extends CI_Controller {
 
         $data_foto = $this->upload->data();
         $foto = $data_foto['file_name'];
+        
+var_dump($foto);
+die;
         $id = $this->session->userdata('user_id');
 			$data1 = array(
 				'kode_transaksiretail' => $kdpesan,
