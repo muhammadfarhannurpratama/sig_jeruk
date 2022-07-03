@@ -88,8 +88,6 @@ class TransaksiRetail extends CI_Controller {
         $data_foto = $this->upload->data();
         $foto = $data_foto['file_name'];
         
-var_dump($foto);
-die;
         $id = $this->session->userdata('user_id');
 			$data1 = array(
 				'kode_transaksiretail' => $kdpesan,
